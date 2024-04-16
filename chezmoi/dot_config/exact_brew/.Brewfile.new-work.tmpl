@@ -1,0 +1,11 @@
+{{- includeTemplate "./dot_config/exact_brew/.Brewfile.personal.tmpl" . -}}
+
+# New Work
+
+tap "carlos-precioso/tap", "https://source.xing.com/carlos-precioso/homebrew-tap"
+
+brew "phrase-cli"
+brew "saml2aws"
+
+cask "carlos-precioso/tap/oly"
+cask "carlos-precioso/tap/xingboxctl"

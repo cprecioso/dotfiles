@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# XDG Folders
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+
+# Add mise's shim directory
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :

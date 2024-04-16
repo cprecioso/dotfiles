@@ -1,0 +1,18 @@
+# prettier-ignore
+
+enableGlobalCache: true
+globalFolder: ${XDG_STATE_HOME}/yarn-berry
+
+npmRegistries:
+  //npm.pkg.github.com:
+    npmAlwaysAuth: true
+    npmAuthToken: {{ onepasswordRead "op://Personal/5y6jifmx56zd2dbduvvnxyenei/credential" "my.1password.eu" | quote }}
+  //npm.pkg.github.com/:
+    npmAlwaysAuth: true
+    npmAuthToken: {{ onepasswordRead "op://Personal/5y6jifmx56zd2dbduvvnxyenei/credential" "my.1password.eu" | quote }}
+
+npmScopes:
+  onlyfyio:
+    npmRegistryServer: "https://npm.pkg.github.com"
+
+tsEnableAutoTypes: true

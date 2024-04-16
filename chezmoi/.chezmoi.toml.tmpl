@@ -1,0 +1,5 @@
+{{- $types := list "personal" "new-work" -}}
+{{- $type := promptChoiceOnce . "type" "Type of machine" $types -}}
+
+[data]
+  type = {{ $type | toToml }}
