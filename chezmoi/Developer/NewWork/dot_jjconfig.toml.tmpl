@@ -1,0 +1,18 @@
+{{- if eq .type "new-work" -}}
+[user]
+name = "Carlos Precioso"
+email = "carlos.precioso@onlyfy.com"
+
+[ui]
+diff.format = "git"
+merge-editor = "vscode"
+
+[signing]
+sign-all = true
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH5xYmQz4rLNArPGDS9HqdIA1eNkowWgSAVTmns72H3t"
+backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[revset-aliases]
+'local_work' = 'remote_branches(remote=origin)..'
+{{ end -}}

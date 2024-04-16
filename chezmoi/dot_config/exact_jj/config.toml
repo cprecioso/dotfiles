@@ -1,0 +1,17 @@
+[user]
+name = "Carlos Precioso"
+email = "github@precioso.design"
+
+[ui]
+diff.format = "git"
+diff.tool = ["difft", "--color=always", "$left", "$right"]
+merge-editor = "vscode"
+
+[signing]
+sign-all = true
+backend = "ssh"
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
+backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[revset-aliases]
+'local_work' = 'remote_branches(remote=origin)..'

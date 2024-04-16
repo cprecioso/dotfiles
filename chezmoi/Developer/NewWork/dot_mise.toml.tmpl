@@ -1,0 +1,4 @@
+{{- if eq .type "new-work" -}}
+[env]
+JJ_CONFIG = "{{.chezmoi.config.destDir}}/Developer/NewWork/.jjconfig.toml"
+{{ end -}}

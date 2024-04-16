@@ -21,6 +21,7 @@ export GEM_SPEC_CACHE="${XDG_CACHE_HOME}"/gem
 export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
 export GOPATH="${XDG_DATA_HOME}"/go
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export JJ_CONFIG="${XDG_CONFIG_HOME}/jj/config.toml"
 export LESSHISTFILE="$XDG_STATE_HOME"/less/history
 export MINIKUBE_HOME="${XDG_DATA_HOME}"/minikube
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
