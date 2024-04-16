@@ -1,5 +1,3 @@
-{{- includeTemplate "./dot_config/exact_brew/.Brewfile.common.tmpl" . -}}
-
 # Personal
 
 brew "aria2"

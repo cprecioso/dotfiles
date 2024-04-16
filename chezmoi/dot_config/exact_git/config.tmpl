@@ -72,7 +72,7 @@
 
 
 ### WORK ###
-{{- if eq .type "new-work" }}
+{{- if .new_work }}
 [includeIf "gitdir/i:~/Developer/NewWork/"]
   path = ~/Developer/NewWork/.gitconfig
 {{- end }}

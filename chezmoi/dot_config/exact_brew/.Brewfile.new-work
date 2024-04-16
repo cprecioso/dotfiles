@@ -1,5 +1,3 @@
-{{- includeTemplate "./dot_config/exact_brew/.Brewfile.personal.tmpl" . -}}
-
 # New Work
 
 tap "carlos-precioso/tap", "https://source.xing.com/carlos-precioso/homebrew-tap"

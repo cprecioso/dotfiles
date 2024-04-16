@@ -1,6 +1,6 @@
 Include ~/.orbstack/ssh/config
 
-{{- if eq .type "personal" }}
+{{ if .personal -}}
 Host tuareg
 	HostName tuareg
 	User root

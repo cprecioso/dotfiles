@@ -45,6 +45,6 @@ jabsorb() {
 }
 
 # Includes
-# {{- if eq .type "new-work" }}
+# {{- if .new_work }}
 # {{- "\n" -}} {{ includeTemplate "./dot_config/exact_zsh/.zshrc.new-work.tmpl" . }}
 # {{- end }}

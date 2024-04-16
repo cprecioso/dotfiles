@@ -1,7 +1,9 @@
-{{- if eq .type "personal" -}}
-{{- includeTemplate "./dot_config/exact_brew/.Brewfile.personal.tmpl" . -}}
+{{- include "./dot_config/exact_brew/.Brewfile.common" -}}
+
+{{- if .personal -}}
+{{- include "./dot_config/exact_brew/.Brewfile.personal" -}}
 {{- end -}}
 
-{{- if eq .type "new-work" -}}
-{{- includeTemplate "./dot_config/exact_brew/.Brewfile.new-work.tmpl" . -}}
+{{- if .new_work -}}
+{{- include "./dot_config/exact_brew/.Brewfile.new-work" -}}
 {{- end -}}

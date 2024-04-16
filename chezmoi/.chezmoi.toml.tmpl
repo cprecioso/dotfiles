@@ -1,5 +1,6 @@
-{{- $types := list "personal" "new-work" -}}
-{{- $type := promptChoiceOnce . "type" "Type of machine" $types -}}
+{{- $personal := promptBoolOnce . "personal" "Add Personal files" -}}
+{{- $new_work := promptBoolOnce . "new_work" "Add New Work files" -}}
 
 [data]
-  type = {{ $type | toToml }}
+  personal = {{ $personal | toToml }}
+  new_work = {{ $new_work | toToml }}
