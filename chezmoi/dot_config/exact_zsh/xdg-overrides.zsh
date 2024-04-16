@@ -27,6 +27,7 @@ export MINIKUBE_HOME="${XDG_DATA_HOME}"/minikube
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export PKGX_DIR="${XDG_STATE_HOME}/pkgx-dir"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
