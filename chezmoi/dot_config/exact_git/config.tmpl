@@ -1,0 +1,82 @@
+### BASIC ###
+
+[user]
+  name = Carlos Precioso
+	email = github@precioso.design
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[core]
+	editor = code --wait
+	excludesfile = /Users/carlos.precioso/.config/git/ignore
+	ignorecase = false
+[diff]
+	algorithm = histogram
+[difftool]
+	prompt = false
+	trustExitCode = true
+[merge]
+	conflictstyle = zdiff3
+[mergetool]
+	prompt = false
+[pull]
+	ff = only
+
+### SIGNING ###
+
+[user]
+	signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
+[commit]
+	gpgsign = true
+[tag]
+  forceSignAnnotated = true
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+### CREDENTIALS ###
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+### GITBUTLER ###
+[gitbutler]
+	utmostDiscretion = true
+
+
+### DIFFTASTIC ###
+[diff]
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+	difftool = true
+[diff]
+	external = difft
+
+
+### WORK ###
+{{- if eq .type "new-work" }}
+[includeIf "gitdir/i:~/Developer/NewWork/"]
+  path = ~/Developer/NewWork/.gitconfig
+{{- end }}
+
+### REST ###
+
+
