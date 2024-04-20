@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
-compinit -i -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-
 # XDG Overrides
 export ADOTDIR="$XDG_DATA_HOME"/antigen
 export ANDROID_HOME="${XDG_DATA_HOME}"/android
