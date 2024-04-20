@@ -1,7 +1,13 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
-autoload -Uz compinit
+# brew completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit -i -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+fi
 
 source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ include "./dot_config/exact_zsh/xdg-overrides.zsh" | sha256sum }}
 
@@ -27,14 +33,6 @@ bindkey '^r' _atuin_search_widget
 
 # `file` formula
 export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
-
-# brew completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
 
 # Alias
 alias www="python3 -m http.server"
