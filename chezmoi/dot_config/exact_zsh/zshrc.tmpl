@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
+autoload -Uz compinit
+
 source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ include "./dot_config/exact_zsh/xdg-overrides.zsh" | sha256sum }}
 
 source "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
