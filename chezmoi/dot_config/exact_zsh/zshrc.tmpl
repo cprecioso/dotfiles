@@ -5,7 +5,10 @@ autoload -Uz compinit
 
 source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ include "./dot_config/exact_zsh/xdg-overrides.zsh" | sha256sum }}
 
-source "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+nix_vars_file="/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+if [ -f "$nix_vars_file" ]; then
+  source "$nix_vars_file"
+fi
 
 zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
 
