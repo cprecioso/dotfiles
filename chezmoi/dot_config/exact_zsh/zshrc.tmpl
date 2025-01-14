@@ -9,12 +9,7 @@ if type brew &>/dev/null; then
   compinit -i -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 fi
 
-source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ include "./dot_config/exact_zsh/xdg-overrides.zsh" | sha256sum }}
-
-nix_vars_file="/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
-if [ -f "$nix_vars_file" ]; then
-  source "$nix_vars_file"
-fi
+source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ includeTemplate "./dot_config/exact_zsh/xdg-overrides.zsh.tmpl" . | sha256sum }}
 
 zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
 
@@ -28,6 +23,9 @@ antigen init "$HOME/.config/antigen/antigenrc" # hash: {{ include "./dot_config/
 # fzf
 eval "$(fzf --zsh)"
 
+# jj
+source <(COMPLETE=zsh jj)
+
 # Restore atuin ctrl+r shortcut, overriding the fzf one
 bindkey '^r' _atuin_search_widget
 
@@ -39,18 +37,3 @@ alias www="python3 -m http.server"
 
 # VS Code editor
 export EDITOR="code --wait"
-
-jabsorb() {
-  file="$1"
-
-  operation="$(jj op log -l 1 --no-graph --template id)"
-
-  last_change_id="$(jj log --at-operation "$operation" -r '::@ ~ @' -l 1 --no-graph --template change_id "$file")"
-
-  jj move --at-operation "$operation" --from @ --to "$last_change_id" "$file"
-}
-
-# Includes
-# {{- if .new_work }}
-# {{- "\n" -}} {{ includeTemplate "./dot_config/exact_zsh/.zshrc.new-work.tmpl" . }}
-# {{- end }}

@@ -6,6 +6,7 @@ email = "github@precioso.design"
 diff.format = "git"
 diff.tool = ["difft", "--color=always", "$left", "$right"]
 merge-editor = "vscode"
+default-command = "log"
 
 [signing]
 sign-all = true
@@ -13,5 +14,14 @@ backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
 backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
+[revsets]
+log = "current_bookmark"
+
 [revset-aliases]
-'local_work' = 'remote_branches(remote=origin)..'
+'local_work' = 'remote_bookmarks(remote=origin)..'
+'current_bookmark' = '(trunk()..@)::'
+
+{{- if .remote }}
+# Remote
+{{ include "./dot_config/exact_jj/.config.remote.toml" -}}
+{{- end -}}

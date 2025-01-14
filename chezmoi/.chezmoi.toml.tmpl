@@ -1,6 +1,6 @@
 {{- $personal := promptBoolOnce . "personal" "Add Personal files" -}}
-{{- $new_work := promptBoolOnce . "new_work" "Add New Work files" -}}
+{{- $remote   := promptBoolOnce . "remote"   "Add Remote files"   -}}
 
 [data]
   personal = {{ $personal | toToml }}
-  new_work = {{ $new_work | toToml }}
+  remote   = {{ $remote   | toToml }}

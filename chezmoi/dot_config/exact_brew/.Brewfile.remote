@@ -1,0 +1,8 @@
+# Remote
+tap "carlos.precioso.remote/tap", "https://gitlab.com/carlos.precioso.remote/homebrew-tap.git"
+
+cask "linear-linear"
+cask "loom"
+cask "notion-calendar"
+cask "notion"
+cask "obsidian"

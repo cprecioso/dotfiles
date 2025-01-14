@@ -1,0 +1,11 @@
+[[--scope]]
+--when.repositories = ["~/Developer/Remote"]
+
+[--scope.user]
+email = "carlos.precioso@remote.com"
+
+[--scope.signing]
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdO7UIlkhd6aYZNWCqDthsP4sibDRVpav2NyXzZhUGK"
+
+[--scope.git]
+push-bookmark-prefix = "carlos.precioso/push-"

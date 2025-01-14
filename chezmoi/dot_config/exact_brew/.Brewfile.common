@@ -46,15 +46,15 @@ cask "hex-fiend"
 cask "homebrew/cask-fonts/font-fira-code"
 cask "imageoptim"
 cask "iterm2"
+cask "jordanbaird-ice"
 cask "latest"
-cask "logi-options-plus"
-cask "microsoft-auto-update"
-cask "microsoft-excel"
-cask "microsoft-powerpoint"
-cask "microsoft-word"
+cask "logi-options+"
+cask "logitech-camera-settings"
 cask "monitorcontrol"
+cask "orbstack"
 cask "pictogram"
 cask "raycast"
+cask "shottr"
 cask "sloth"
 cask "spotify"
 cask "timemachineeditor"
@@ -66,8 +66,5 @@ mas "Bike", id: 1588292384
 mas "Dark Reader for Safari", id: 1438243180
 mas "Gifski", id: 1351639930
 mas "Hush", id: 1544743900
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "SponsorBlock", id: 1573461917
 mas "The Unarchiver", id: 425424353

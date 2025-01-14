@@ -47,6 +47,9 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gitlab.com"]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential]
 	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
@@ -71,12 +74,11 @@
 	external = difft
 
 
-### WORK ###
-{{- if .new_work }}
-[includeIf "gitdir/i:~/Developer/NewWork/"]
-  path = ~/Developer/NewWork/.gitconfig
+{{ if .remote -}}
+### Remote ###
+[includeIf "gitdir/i:~/Developer/Remote/"]
+  path = ~/Developer/Remote/.gitconfig
 {{- end }}
 
+
 ### REST ###
-
-

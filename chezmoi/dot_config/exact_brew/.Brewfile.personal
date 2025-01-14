@@ -1,26 +1,14 @@
 # Personal
 
 brew "aria2"
-brew "buildkit"
-brew "dagger"
-brew "earthly"
-brew "hashicorp/tap/nomad"
-brew "oven-sh/bun/bun"
-brew "qemu"
 brew "swift-format"
 brew "swiftformat"
 brew "yt-dlp"
 
-cask "adobe-creative-cloud"
-cask "android-platform-tools"
-cask "asset-catalog-tinkerer"
 cask "beeper"
-cask "carbon-copy-cloner"
-cask "cprecioso/tap/msty"
 cask "cyberduck"
 cask "daisydisk"
 cask "epic-games"
-cask "gather"
 cask "homebrew/cask-fonts/font-iosevka"
 cask "homebrew/cask-fonts/font-new-york"
 cask "homebrew/cask-fonts/font-sf-compact"
@@ -28,10 +16,9 @@ cask "homebrew/cask-fonts/font-sf-mono"
 cask "homebrew/cask-fonts/font-sf-pro"
 cask "http-toolkit"
 cask "iina"
-cask "mimestream"
 cask "moneymoney"
+cask "msty"
 cask "netnewswire"
-cask "orbstack"
 cask "proxyman"
 cask "qflipper"
 cask "rapidapi"
@@ -43,15 +30,11 @@ cask "virtualbuddy"
 cask "xcodes"
 cask "zed"
 
-mas "Card Of Darkness", id: 1462717703
 mas "Deliveries", id: 290986013
 mas "Flighty", id: 1358823008
-mas "Grindstone", id: 1476307705
 mas "Infuse", id: 1136220934
 mas "Parcel", id: 639968404
-mas "Populus Run", id: 6470197867
 mas "Shazam", id: 897118787
-mas "Shovel Knight Dig", id: 1538097794
 mas "Steam Link", id: 1246969117
 mas "Tailscale", id: 1475387142
 mas "Telegram", id: 747648890

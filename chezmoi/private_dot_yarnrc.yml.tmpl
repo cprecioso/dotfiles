@@ -3,6 +3,7 @@
 enableGlobalCache: true
 globalFolder: ${XDG_STATE_HOME}/yarn-berry
 
+{{ if .personal -}}
 npmRegistries:
   //npm.pkg.github.com:
     npmAlwaysAuth: true
@@ -10,6 +11,7 @@ npmRegistries:
   //npm.pkg.github.com/:
     npmAlwaysAuth: true
     npmAuthToken: {{ onepasswordRead "op://Personal/5y6jifmx56zd2dbduvvnxyenei/credential" "my.1password.eu" | quote }}
+{{- end }}
 
 npmScopes:
   onlyfyio:
