@@ -9,10 +9,14 @@ merge-editor = "vscode"
 default-command = "log"
 
 [signing]
-sign-all = true
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
 backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[git]
+subprocess = true
+sign-on-push = true
+push-new-bookmarks = true
 
 [revsets]
 log = "current_bookmark"
@@ -21,7 +25,7 @@ log = "current_bookmark"
 'local_work' = 'remote_bookmarks(remote=origin)..'
 'current_bookmark' = '(trunk()..@)::'
 
-{{- if .remote }}
+{{ if .remote }}
 # Remote
 {{ include "./dot_config/exact_jj/.config.remote.toml" -}}
-{{- end -}}
+{{ end }}
