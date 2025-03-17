@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Brewfile hash: {{ includeTemplate "./dot_config/exact_brew/Brewfile.tmpl" . | sha256sum }}
+
+# This does not remove any formulae, just checks that the installed deps are the ones on the Brewfile
+brew bundle cleanup || true
+
 brew bundle install --no-upgrade
 
 brew services start ohueter/tap/autokbisw
