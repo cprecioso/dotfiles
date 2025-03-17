@@ -1,3 +1,4 @@
 # Wasp
-cask "notion-calendar"
+cask "discord"
 cask "notion"
+cask "overlayed"
