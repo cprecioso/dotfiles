@@ -4,6 +4,7 @@ deno = "latest"
 "npm:corepack" = "latest"
 "npm:prettier" = "latest"
 "uv" = "latest"
+tuist = "latest"
 
 [settings]
 lockfile = true

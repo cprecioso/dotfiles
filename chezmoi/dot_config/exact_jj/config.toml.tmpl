@@ -27,7 +27,7 @@ log = "current_bookmark"
 'local_work' = 'remote_bookmarks(remote=origin)..'
 'current_bookmark' = '(trunk()..@)::'
 
-{{ if .remote }}
-# Remote
-{{ include "./dot_config/exact_jj/.config.remote.toml" -}}
-{{ end }}
+{{- if .wasp }}
+# Wasp
+{{ include "./dot_config/exact_jj/.config.wasp.toml" -}}
+{{- end -}}

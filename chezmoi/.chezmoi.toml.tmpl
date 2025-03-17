@@ -1,6 +1,6 @@
 {{- $personal := promptBoolOnce . "personal" "Add Personal files" -}}
-{{- $remote   := promptBoolOnce . "remote"   "Add Remote files"   -}}
+{{- $wasp   := promptBoolOnce . "wasp"   "Add Wasp files"   -}}
 
 [data]
   personal = {{ $personal | toToml }}
-  remote   = {{ $remote   | toToml }}
+  wasp   = {{ $wasp   | toToml }}

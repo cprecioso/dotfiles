@@ -1,0 +1,3 @@
+# Wasp
+cask "notion-calendar"
+cask "notion"

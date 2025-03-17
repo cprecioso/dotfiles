@@ -37,3 +37,8 @@ alias www="python3 -m http.server"
 
 # VS Code editor
 export EDITOR="code --wait"
+
+{{ if .wasp -}}
+# Wasp
+export WASP_TELEMETRY_DISABLE=1
+{{- end }}

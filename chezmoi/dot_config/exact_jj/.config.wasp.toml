@@ -1,0 +1,11 @@
+[[--scope]]
+--when.repositories = ["~/Developer/Wasp"]
+
+[--scope.user]
+email = "carlos@wasp-lang.dev"
+
+[--scope.signing]
+key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2ly9KwhPCe1W92HPcYWOcfc7mSBGZvA60XKaZMHpEs"
+
+[--scope.git]
+push-bookmark-prefix = "cprecioso/push-"

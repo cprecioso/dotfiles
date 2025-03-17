@@ -74,10 +74,10 @@
 	external = difft
 
 
-{{ if .remote -}}
-### Remote ###
-[includeIf "gitdir/i:~/Developer/Remote/"]
-  path = ~/Developer/Remote/.gitconfig
+{{ if .wasp -}}
+### Wasp ###
+[includeIf "gitdir/i:~/Developer/Wasp/"]
+  path = ~/Developer/Wasp/.gitconfig
 {{- end }}
 
 

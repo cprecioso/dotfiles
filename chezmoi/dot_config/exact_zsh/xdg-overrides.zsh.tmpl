@@ -32,10 +32,3 @@ export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
 
 # shellcheck disable=SC2139
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
-
-
-{{ if .remote -}}
-# REMOTECTL AWS WORKAROUND
-export AWS_CONFIG_FILE="$HOME"/.aws/config
-export AWS_SHARED_CREDENTIALS_FILE="$HOME"/.aws/credentials
-{{- end }}
