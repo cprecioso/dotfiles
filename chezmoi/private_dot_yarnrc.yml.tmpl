@@ -13,8 +13,4 @@ npmRegistries:
     npmAuthToken: {{ onepasswordRead "op://Personal/5y6jifmx56zd2dbduvvnxyenei/credential" "my.1password.eu" | quote }}
 {{- end }}
 
-npmScopes:
-  onlyfyio:
-    npmRegistryServer: "https://npm.pkg.github.com"
-
 tsEnableAutoTypes: true
