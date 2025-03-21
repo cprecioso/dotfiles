@@ -10,7 +10,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
 # Add mise's shim directory
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+eval "$(mise activate zsh --shims)"
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
