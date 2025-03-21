@@ -4,7 +4,17 @@ deno = "latest"
 "npm:corepack" = "latest"
 "npm:prettier" = "latest"
 "uv" = "latest"
+
+{{- if .personal }}
 tuist = "latest"
+{{- end -}}
+
+{{- if .wasp }}
+cabal = "latest"
+stack = "latest"
+hls = "latest"
+ghc = "latest"
+{{- end }}
 
 [settings]
 lockfile = true
