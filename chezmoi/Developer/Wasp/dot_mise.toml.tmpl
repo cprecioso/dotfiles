@@ -1,7 +1,13 @@
 {{- if .wasp -}}
 [tools]
 cabal = "latest"
+ghc = "8.10.7"
+hls = "2.2.0.0"
+"npm:dotenv-vault" = "latest"
 
 [env]
 OP_ACCOUNT = "wasplang.1password.com"
+'_'.path = [
+  "/opt/homebrew/opt/llvm@13/bin"
+]
 {{ end -}}
