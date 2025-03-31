@@ -1,4 +1,3 @@
 # Wasp
 cask "discord"
 cask "notion"
-cask "overlayed"

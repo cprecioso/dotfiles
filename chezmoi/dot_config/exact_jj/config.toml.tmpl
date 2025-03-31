@@ -24,10 +24,10 @@ push-new-bookmarks = true
 log = "current_bookmark"
 
 [revset-aliases]
-'local_work' = 'remote_bookmarks(remote=origin)..'
+'local_work' = 'remote_bookmarks()..(visible_heads() ~ builtin_immutable_heads())'
 'current_bookmark' = '(trunk()..@)::'
 
-{{- if .wasp }}
+{{ if .wasp -}}
 # Wasp
 {{ include "./dot_config/exact_jj/.config.wasp.toml" -}}
 {{- end -}}
