@@ -1,0 +1,5 @@
+{{ if .wasp -}}
+#!/bin/sh
+
+exec ~/Developer/Wasp/wasp/waspc/run "$@"
+{{- end }}
