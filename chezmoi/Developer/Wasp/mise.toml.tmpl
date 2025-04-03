@@ -14,4 +14,11 @@ WASP_TELEMETRY_DISABLE = "1"
   "/opt/homebrew/opt/llvm@13/bin"
 ]
 
+[tasks."start-docker"]
+run = "orbctl start"
+
+[tasks."postgres"]
+run = "docker run --rm --publish 5433:5432 -v wasp-db-data:/var/lib/postgresql/data --env POSTGRES_PASSWORD={{ .waspPostgresPassword }} --name wasp-postgres postgres"
+depends = "start-docker"
+
 {{- end }}
