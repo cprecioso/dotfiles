@@ -26,6 +26,9 @@ eval "$(fzf --zsh)"
 # jj
 source <(COMPLETE=zsh jj)
 
+# pitchfork
+source <(pitchfork activate zsh)
+
 # Restore atuin ctrl+r shortcut, overriding the fzf one
 bindkey '^r' _atuin_search_widget
 
