@@ -1,0 +1,5 @@
+{{- if .wasp -}}
+[daemons.postgres]
+run = "orbctl start && docker run --rm --publish 5433:5432 -v wasp-db-data:/var/lib/postgresql/data --env POSTGRES_PASSWORD={{ .waspPostgresPassword }} postgres"
+
+{{- end }}
