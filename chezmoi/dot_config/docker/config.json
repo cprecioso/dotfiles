@@ -1,5 +1,7 @@
 {
-  "auths": {},
+  "auths": {
+    "https://index.docker.io/v1/": {}
+  },
   "credsStore": "osxkeychain",
   "currentContext": "orbstack",
   "cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"]
