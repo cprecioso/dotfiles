@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # shellcheck shell=bash
 
-antigen use oh-my-zsh
+antigen use ohmyzsh/ohmyzsh
 
 antigen theme moarram/headline@main
 
