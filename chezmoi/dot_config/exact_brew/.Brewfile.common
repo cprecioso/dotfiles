@@ -1,8 +1,6 @@
 # Common
 
 tap "cprecioso/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
 
 brew "antigen"
 brew "atuin"
