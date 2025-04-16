@@ -59,7 +59,6 @@ cask "sloth"
 cask "spotify"
 cask "timemachineeditor"
 cask "visual-studio-code"
-cask "zen-browser"
 
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
