@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+# mise.toml hash: {{ includeTemplate "./dot_config/exact_mise/config.toml.tmpl" . | sha256sum }}
+
+mise trust ./config.toml
+mise install
