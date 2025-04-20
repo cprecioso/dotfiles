@@ -1,9 +1,70 @@
-{{- include "./dot_config/exact_brew/.Brewfile.common" -}}
+{{/* Definitions */}}
 
-{{- if .personal -}}
-{{- include "./dot_config/exact_brew/.Brewfile.personal" -}}
-{{- end -}}
+{{ $data := . }}
+{{
+  $profiles :=
+    dict
+      "common" true
+      "personal" .personal
+      "wasp" .wasp
+}}
 
-{{- if .wasp -}}
-{{- include "./dot_config/exact_brew/.Brewfile.wasp" -}}
-{{- end -}}
+{{/* Kinds */}}
+
+{{ define "mas" }}
+{{ if (hasKey . "mas") }}
+{{ range $name, $id := .mas }}
+mas {{ $name | quote }}, id: {{ $id }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ define "tap" }}
+{{ if (hasKey . "tap") }}
+{{ range .tap }}
+tap {{ . | quote }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ define "cask" }}
+{{ if (hasKey . "cask") }}
+{{ range .cask }}
+cask {{ . | quote }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ define "formula" }}
+{{ if (hasKey . "formula") }}
+{{ range .formula }}
+brew {{ . | quote }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{/* Brew bundle */}}
+
+{{ range $name, $enabled := $profiles }}
+{{ if $enabled }}
+{{ template "mas" (get $data.brew_packages $name) }}
+{{ end }}
+{{ end }}
+
+{{ range $name, $enabled := $profiles }}
+{{ if $enabled }}
+{{ template "tap" (get $data.brew_packages $name) }}
+{{ end }}
+{{ end }}
+
+{{ range $name, $enabled := $profiles }}
+{{ if $enabled }}
+{{ template "cask" (get $data.brew_packages $name) }}
+{{ end }}
+{{ end }}
+
+{{ range $name, $enabled := $profiles }}
+{{ if $enabled }}
+{{ template "formula" (get $data.brew_packages $name) }}
+{{ end }}
+{{ end }}
