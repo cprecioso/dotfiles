@@ -1,6 +1,3 @@
-{{- if .wasp -}}
 [daemons."wasp-postgres"]
 run = "mise run postgres"
 auto = ["start", "stop"]
-
-{{- end }}
