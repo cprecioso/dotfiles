@@ -119,6 +119,8 @@ brew_packages:
       "Tripsy": 1429967544
       "Xcode": 497799835
   wasp:
+    formula:
+      - llvm@13
     cask:
       - discord
       - logseq
