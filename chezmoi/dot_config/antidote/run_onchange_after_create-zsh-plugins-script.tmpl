@@ -3,5 +3,6 @@
 
 # hash: {{ include "./dot_config/antidote/zsh_plugins.txt" | sha256sum }}
 
+zstyle ':antidote:bundle' use-friendly-names 'yes'
 source /opt/homebrew/share/antidote/antidote.zsh
 antidote bundle <./zsh_plugins.txt >./zsh_plugins.zsh
