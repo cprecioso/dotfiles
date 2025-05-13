@@ -11,13 +11,12 @@ merge-editor = "vscode"
 default-command = "log"
 
 [signing]
+behavior = "own"
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
 backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [git]
-subprocess = true
-sign-on-push = true
 push-new-bookmarks = true
 
 [revsets]
