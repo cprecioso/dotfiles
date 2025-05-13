@@ -9,7 +9,7 @@ if type brew &>/dev/null; then
   compinit -i -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 fi
 
-source "$HOME/.config/zsh/xdg-overrides.zsh" # hash: {{ includeTemplate "./dot_config/exact_zsh/xdg-overrides.zsh.tmpl" . | sha256sum }}
+source "$HOME/.config/zsh/xdg-overrides.zsh"
 
 zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
 
