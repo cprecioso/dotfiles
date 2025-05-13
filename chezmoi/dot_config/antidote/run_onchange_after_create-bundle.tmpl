@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+# hash: {{ include "./dot_config/antidote/zsh_plugins.txt" | sha256sum }}
+
+source /opt/homebrew/share/antidote/antidote.zsh
+antidote bundle <./zsh_plugins.txt >./zsh_plugins.zsh

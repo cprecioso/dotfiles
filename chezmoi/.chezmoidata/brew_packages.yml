@@ -3,7 +3,7 @@ brew_packages:
     tap:
       - cprecioso/tap
     formula:
-      - antigen
+      - antidote
       - atuin
       - chezmoi
       - coreutils

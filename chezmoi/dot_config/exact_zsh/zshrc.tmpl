@@ -16,9 +16,8 @@ zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
 # Initially disable the atuin shortcuts
 export ATUIN_NOBIND="true"
 
-# Antigen
-source /opt/homebrew/share/antigen/antigen.zsh
-antigen init "$HOME/.config/antigen/antigenrc" # hash: {{ include "./dot_config/exact_antigen/antigenrc" | sha256sum }}
+# Antidote
+source "$HOME/.config/antidote/zsh_plugins.zsh"
 
 # fzf
 eval "$(fzf --zsh)"
