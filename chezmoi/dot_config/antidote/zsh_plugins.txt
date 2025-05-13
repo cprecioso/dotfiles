@@ -1,6 +1,9 @@
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/iterm2
+ohmyzsh/ohmyzsh path:plugins/jj
+ohmyzsh/ohmyzsh path:plugins/mise
 
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions

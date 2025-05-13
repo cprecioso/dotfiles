@@ -19,20 +19,11 @@ export ATUIN_NOBIND="true"
 # Antidote
 source "$HOME/.config/antidote/zsh_plugins.zsh"
 
-# fzf
-eval "$(fzf --zsh)"
-
-# jj
-source <(COMPLETE=zsh jj)
-
-# mise
-eval "$(mise activate zsh)"
+# Restore atuin ctrl+r shortcut, overriding the fzf one
+bindkey '^r' _atuin_search_widget
 
 # pitchfork
 source <(pitchfork activate zsh)
-
-# Restore atuin ctrl+r shortcut, overriding the fzf one
-bindkey '^r' _atuin_search_widget
 
 # `file` formula
 export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
