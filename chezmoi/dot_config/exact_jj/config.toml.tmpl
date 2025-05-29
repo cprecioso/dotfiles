@@ -5,10 +5,13 @@ name = "Carlos Precioso"
 email = "github@precioso.design"
 
 [ui]
-diff.format = "git"
-diff.tool = ["difft", "--color=always", "$left", "$right"]
 merge-editor = "vscode"
 default-command = "log"
+conflict-marker-style = "git"
+
+[merge-tools.difft]
+program = "difft"
+diff.tool = ["--color=always", "$left", "$right"]
 
 [signing]
 behavior = "own"

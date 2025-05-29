@@ -62,16 +62,10 @@
 
 
 ### DIFFTASTIC ###
-[diff]
-	tool = difftastic
-[difftool]
-	prompt = false
-[difftool "difftastic"]
+[difftool "difft"]
 	cmd = difft "$LOCAL" "$REMOTE"
 [pager]
 	difftool = true
-[diff]
-	external = difft
 
 
 {{ if .wasp -}}
