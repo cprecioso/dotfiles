@@ -20,6 +20,7 @@ brew_packages:
       - jj
       - jq
       - lima
+      - lima-additional-guestagents
       - mas
       - mise
       - moreutils
@@ -39,6 +40,8 @@ brew_packages:
       - 1password
       - 1password-cli
       - arc
+      - cameracontroller
+      - dash
       - firefox
       - git-credential-manager
       - gitup
@@ -49,7 +52,6 @@ brew_packages:
       - iterm2
       - latest
       - logi-options+
-      - logitech-camera-settings
       - monitorcontrol
       - notion-calendar
       - orbstack
@@ -58,6 +60,7 @@ brew_packages:
       - shottr
       - sloth
       - spotify
+      - suspicious-package
       - timemachineeditor
       - visual-studio-code
     mas:
@@ -67,18 +70,16 @@ brew_packages:
       "Dark Reader for Safari": 1438243180
       "Gifski": 1351639930
       "Hush": 1544743900
-      "SponsorBlock": 1573461917
       "The Unarchiver": 425424353
   personal:
     formula:
       - aria2
-      - swift-format
-      - swiftformat
       - yt-dlp
     cask:
       - beeper
       - cyberduck
       - daisydisk
+      - dash
       - epic-games
       - github-copilot-for-xcode
       - font-iosevka
@@ -97,12 +98,10 @@ brew_packages:
       - rapidapi
       - sf-symbols
       - steam
-      - suspicious-package
       - tableplus
       - utm
       - virtualbuddy
       - xcodes
-      - zed
     mas:
       "Deliveries": 290986013
       "Flighty": 1358823008
@@ -112,16 +111,21 @@ brew_packages:
       "Pages": 409201541
       "Parcel": 639968404
       "Shazam": 897118787
+      "SponsorBlock": 1573461917
       "Steam Link": 1246969117
       "Tailscale": 1475387142
-      "Telegram": 747648890
       "TestFlight": 899247664
       "Tripsy": 1429967544
       "Xcode": 497799835
   wasp:
     formula:
+      - dagger/tap/dagger
       - llvm@13
+      - ormolu
     cask:
       - discord
       - logseq
       - notion
+      - tableplus
+    mas:
+      "Xcode": 497799835
