@@ -1,7 +1,9 @@
 # prettier-ignore
 
 enableGlobalCache: true
-globalFolder: ${XDG_STATE_HOME}/yarn-berry
+globalFolder: "${XDG_STATE_HOME}/yarn-berry"
+
+nodeLinker: node-modules
 
 {{ if .personal -}}
 npmRegistries:
