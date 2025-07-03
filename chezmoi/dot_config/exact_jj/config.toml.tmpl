@@ -31,5 +31,5 @@ log = "current_bookmark"
 
 {{ if .wasp -}}
 # Wasp
-{{ include "./dot_config/exact_jj/.config.wasp.toml" -}}
+{{ includeTemplate "./dot_config/exact_jj/.config.wasp.toml.tmpl" . -}}
 {{- end -}}

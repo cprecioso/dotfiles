@@ -12,7 +12,7 @@
 	defaultBranch = main
 [core]
 	editor = code --wait
-	excludesfile = ~/.config/git/ignore
+	excludesfile = {{.chezmoi.config.destDir}}/.config/git/ignore
 	ignorecase = false
 [diff]
 	algorithm = histogram
@@ -70,8 +70,8 @@
 
 {{ if .wasp -}}
 ### Wasp ###
-[includeIf "gitdir/i:~/Developer/Wasp/"]
-  path = ~/Developer/Wasp/.config/git/config
+[includeIf "gitdir/i:{{.chezmoi.config.destDir}}/Developer/Wasp/"]
+  path = {{.chezmoi.config.destDir}}/Developer/Wasp/.config/git/config
 {{- end }}
 
 

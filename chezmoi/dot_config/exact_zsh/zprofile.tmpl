@@ -4,10 +4,10 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # XDG Folders
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_STATE_HOME=$HOME/.local/state
-export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME="{{.chezmoi.config.destDir}}/.local/share"
+export XDG_CONFIG_HOME="{{.chezmoi.config.destDir}}/.config"
+export XDG_STATE_HOME="{{.chezmoi.config.destDir}}/.local/state"
+export XDG_CACHE_HOME="{{.chezmoi.config.destDir}}/.cache"
 
 # Add mise's shim directory
 eval "$(mise activate zsh --shims)"
