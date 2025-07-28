@@ -7,6 +7,7 @@ flyctl = "latest"
 node = "20"
 "npm:@railway/cli" = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
+"ubi:sst/opencode" = "latest"
 
 [env]
 OP_ACCOUNT = "wasplang.1password.com"
@@ -25,4 +26,4 @@ run = "docker run --rm --publish 5433:5432 -v wasp-db-data:/var/lib/postgresql/d
 depends = "start-docker"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "wasp"]
