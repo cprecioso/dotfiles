@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+# hash: {{ include "./dot_config/antidote/zsh_plugins.txt" | sha256sum }}
+
+"{{.chezmoi.config.destDir}}/.local/bin/antidote-update"

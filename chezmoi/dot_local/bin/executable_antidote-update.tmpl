@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+# shellcheck shell=bash
+
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+source /opt/homebrew/share/antidote/antidote.zsh
+
+antidote update --bundles
+
+antidote bundle \
+  <"{{.chezmoi.config.destDir}}/.config/antidote/zsh_plugins.txt" \
+  >"{{.chezmoi.config.destDir}}/.config/antidote/zsh_plugins.zsh"
