@@ -20,6 +20,9 @@ source <(pitchfork activate zsh)
 # `file` formula
 export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
 
+# Local bin
+export PATH="{{.chezmoi.config.destDir}}/.local/bin:$PATH"
+
 # Alias
 alias www="python3 -m http.server"
 
