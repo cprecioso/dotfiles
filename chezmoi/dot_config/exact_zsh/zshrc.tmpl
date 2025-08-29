@@ -3,14 +3,12 @@
 
 source "{{.chezmoi.config.destDir}}/.config/zsh/xdg-overrides.zsh"
 
-zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
-
 # Initially disable the atuin shortcuts
 export ATUIN_NOBIND="true"
 
 # Antidote
-source "{{.chezmoi.config.destDir}}/.local/state/antidote/zsh_plugins.zsh"
 source "{{.chezmoi.config.destDir}}/.config/antidote/check_update.zsh"
+source "{{.chezmoi.config.destDir}}/.local/state/antidote/zsh_plugins.zsh"
 
 # Restore atuin ctrl+r shortcut, overriding the fzf one
 bindkey '^r' _atuin_search_widget
