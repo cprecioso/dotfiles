@@ -9,7 +9,8 @@ zstyle :omz:plugins:iterm2 shell-integration yes # iTerm integration
 export ATUIN_NOBIND="true"
 
 # Antidote
-source "{{.chezmoi.config.destDir}}/.config/antidote/zsh_plugins.zsh"
+source "{{.chezmoi.config.destDir}}/.local/state/antidote/zsh_plugins.zsh"
+source "{{.chezmoi.config.destDir}}/.config/antidote/check_update.zsh"
 
 # Restore atuin ctrl+r shortcut, overriding the fzf one
 bindkey '^r' _atuin_search_widget

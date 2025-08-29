@@ -6,6 +6,11 @@ source /opt/homebrew/share/antidote/antidote.zsh
 
 antidote update --bundles
 
+config_dir="{{.chezmoi.config.destDir}}/.config/antidote"
+state_dir="{{.chezmoi.config.destDir}}/.local/state/antidote"
+
 antidote bundle \
-  <"{{.chezmoi.config.destDir}}/.config/antidote/zsh_plugins.txt" \
-  >"{{.chezmoi.config.destDir}}/.config/antidote/zsh_plugins.zsh"
+	<"$config_dir/zsh_plugins.txt" \
+	>"$state_dir/zsh_plugins.zsh"
+
+touch "$state_dir/last_update"

@@ -1,0 +1,19 @@
+# Brew completions
+/opt/homebrew/share/zsh-completions kind:fpath
+
+# OMZ and plugins
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/iterm2
+ohmyzsh/ohmyzsh path:plugins/jj
+ohmyzsh/ohmyzsh path:plugins/mise
+
+# Other plugins
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search
+atuinsh/atuin
+
+# Theme
+moarram/headline

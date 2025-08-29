@@ -1,0 +1,24 @@
+# shellcheck shell=bash
+
+state_dir="{{.chezmoi.config.destDir}}/.local/state/antidote"
+update_file="$state_dir/last_update"
+
+needs_update=1
+
+if [[ -f "$update_file" ]]; then
+	if (($(date +%s) - $(stat -f %m "$update_file") < 604800)); then
+		needs_update=0
+	fi
+fi
+
+if [[ $needs_update -eq 1 ]]; then
+	echo "It's been more than 7 days since you last updated your zsh plugins."
+	echo "Do you want to update them now? (y/n)"
+
+	read -r answer
+	if [[ $answer == "y" || $answer == "Y" ]]; then
+		"{{.chezmoi.config.destDir}}/.local/bin/antidote-update"
+	else
+		echo "Skipping update. You can update later by running 'antidote-update'."
+	fi
+fi
