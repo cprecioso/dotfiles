@@ -6,4 +6,5 @@
 .swiftpm
 .wget-hsts
 .yarnrc
+.zsh_history
 .zshenv

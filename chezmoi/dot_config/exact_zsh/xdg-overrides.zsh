@@ -12,6 +12,7 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export CARGO_HOME="${XDG_DATA_HOME}"/cargo
 export COMPOSER_CACHE_DIR=$XDG_CACHE_HOME/composer
 export COMPOSER_HOME=$XDG_CONFIG_HOME/composer
+export CP_HOME_DIR="$XDG_DATA_HOME"/cocoapods
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}"/docker
 export FLY_CONFIG_DIR="$XDG_STATE_HOME"/fly
 export GEM_HOME="${XDG_DATA_HOME}"/gem
@@ -26,12 +27,16 @@ export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export PKGX_DIR="${XDG_STATE_HOME}/pkgx-dir"
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc
 export RUSTUP_HOME="${XDG_DATA_HOME}"/rustup
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export STACK_XDG=1
+export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:$TERMINFO_DIRS:/usr/share/terminfo"
+export TERMINFO="$XDG_DATA_HOME"/terminfo
 export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
+export ZSH_COMPDUMP="$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
 # shellcheck disable=SC2139
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
