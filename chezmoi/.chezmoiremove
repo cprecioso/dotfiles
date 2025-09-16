@@ -1,0 +1,9 @@
+.npm
+.bashrc
+.yarnrc
+.wget-hsts
+.psql_history
+.gitconfig
+.profile
+.zshenv
+.swiftpm
