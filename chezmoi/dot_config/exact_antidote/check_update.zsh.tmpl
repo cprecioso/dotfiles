@@ -20,5 +20,6 @@ if [[ $needs_update -eq 1 ]]; then
 		"{{.chezmoi.config.destDir}}/.local/bin/antidote-update"
 	else
 		echo "Skipping update. You can update later by running 'antidote-update'."
+		touch "$update_file"
 	fi
 fi
