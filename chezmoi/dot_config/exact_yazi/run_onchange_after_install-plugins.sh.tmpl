@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+ya pkg install # hash: {{ include "./dot_config/exact_yazi/package.toml" | sha256sum }}
