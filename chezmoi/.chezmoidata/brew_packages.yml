@@ -13,9 +13,9 @@ brew_packages:
       - file-formula
       - fzf
       - gh
+      - git
       - git-absorb
       - git-lfs
-      - git
       - hyperfine
       - jj
       - jq
@@ -34,8 +34,8 @@ brew_packages:
       - unar
       - wget
       - xdg-ninja
-      - zsh-completions
       - zsh
+      - zsh-completions
     cask:
       - 1password
       - 1password-cli
@@ -43,11 +43,11 @@ brew_packages:
       - cameracontroller
       - dash
       - firefox
+      - font-fira-code
       - git-credential-manager
       - gitup
       - google-chrome
       - hex-fiend
-      - font-fira-code
       - imageoptim
       - iterm2
       - latest
@@ -81,12 +81,12 @@ brew_packages:
       - daisydisk
       - dash
       - epic-games
-      - github-copilot-for-xcode
       - font-iosevka
       - font-new-york
       - font-sf-compact
       - font-sf-mono
       - font-sf-pro
+      - github-copilot-for-xcode
       - http-toolkit
       - iina
       - logseq
