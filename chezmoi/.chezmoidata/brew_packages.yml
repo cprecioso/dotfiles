@@ -45,8 +45,9 @@ brew_packages:
       - dash
       - firefox
       - font-fira-code
+      - font-fira-code-nerd-font
       - git-credential-manager
-      - gitup
+      - gitup-app
       - google-chrome
       - hex-fiend
       - imageoptim
@@ -88,7 +89,6 @@ brew_packages:
       - font-sf-mono
       - font-sf-pro
       - github-copilot-for-xcode
-      - http-toolkit
       - iina
       - logseq
       - moneymoney
@@ -102,7 +102,7 @@ brew_packages:
       - tableplus
       - utm
       - virtualbuddy
-      - xcodes
+      - xcodes-app
     mas:
       "Deliveries": 290986013
       "Flighty": 1358823008
@@ -110,7 +110,7 @@ brew_packages:
       "Keynote": 409183694
       "Numbers": 409203825
       "Pages": 409201541
-      "Parcel": 639968404
+      "Parcel": 375589283
       "Shazam": 897118787
       "SponsorBlock": 1573461917
       "Steam Link": 1246969117
