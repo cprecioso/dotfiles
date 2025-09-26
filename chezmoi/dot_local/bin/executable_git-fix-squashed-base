@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function select_pr() {
+	(
+		printf '#\tTitle\tBranch\tAuthor'
+		gh pr list -s merged --json number,title,headRefName,author |
+			jq -r '.[] | [.number, .title, .headRefName, "@" + .author.login] | join("\t")'
+	) |
+		column -ts $'\t' |
+		fzf --no-sort --header-lines 1 --preview='gh pr view {1} --comments' --accept-nth 1
+}
+
+pr_number=${1:-$(select_pr)}
+pr_data=$(gh pr view "$pr_number" --json headRefOid,mergeCommit)
+
+head_commit=$(echo "$pr_data" | jq -r '.headRefOid')
+merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid')
+
+git merge "$head_commit"
+git merge "$merge_commit"
