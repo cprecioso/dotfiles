@@ -1,5 +1,3 @@
-# shellcheck shell=bash
-
 # iTerm integration
 zstyle ':omz:plugins:iterm2' shell-integration yes
 

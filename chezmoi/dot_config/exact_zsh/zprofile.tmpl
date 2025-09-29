@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-# shellcheck shell=bash
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -13,4 +12,5 @@ export XDG_CACHE_HOME="{{.chezmoi.config.destDir}}/.cache"
 eval "$(mise activate zsh --shims)"
 
 # Added by OrbStack: command-line tools and integration
+# shellcheck source=/dev/null
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :

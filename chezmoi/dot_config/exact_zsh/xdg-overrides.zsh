@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-# shellcheck shell=bash
 
 # XDG Overrides
 export ANDROID_HOME="${XDG_DATA_HOME}"/android
