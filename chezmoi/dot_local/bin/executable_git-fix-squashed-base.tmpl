@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# shellcheck source=../lib/shell/github.bash
+source "{{.chezmoi.config.destDir}}/.local/lib/shell/github.bash"
+
+pr_number=${1:-$(select_pr --state merged)}
+pr_data=$(gh pr view "$pr_number" --json headRefOid,mergeCommit)
+
+head_commit=$(echo "$pr_data" | jq -r '.headRefOid')
+merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid')
+
+git merge "$head_commit"
+git merge "$merge_commit"
