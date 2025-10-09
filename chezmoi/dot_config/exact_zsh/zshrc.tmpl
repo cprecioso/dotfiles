@@ -15,6 +15,9 @@ source "{{.chezmoi.config.destDir}}/.local/state/antidote/zsh_plugins.zsh"
 # Restore atuin ctrl+r shortcut, overriding the fzf one
 bindkey '^r' _atuin_search_widget
 
+# pitchfork
+source <(pitchfork activate zsh)
+
 # yazi
 function y() {
 	local tmp cwd
