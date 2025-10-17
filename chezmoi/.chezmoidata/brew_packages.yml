@@ -121,6 +121,8 @@ brew_packages:
   wasp:
     formula:
       - dagger/tap/dagger
+      - gpatch
+      - libffi
       - llvm@13
       - ormolu
     cask:
