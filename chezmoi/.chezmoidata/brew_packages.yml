@@ -123,8 +123,6 @@ brew_packages:
       - dagger/tap/dagger
       - gpatch
       - libffi
-      - llvm@13
-      - ormolu
     cask:
       - discord
       - logseq

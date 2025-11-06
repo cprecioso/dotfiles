@@ -3,11 +3,10 @@
 "npm:@railway/cli" = "latest"
 "npm:dotenv-vault" = "latest"
 "ubi:sst/opencode" = "latest"
-"ubi:tweag/ormolu" = "0.4.0.0"
-cabal = "3.14.2.0"
+cabal = "3.12.1.0"
 flyctl = "latest"
-ghc = "9.0.2"
-hls = "1.9.0.0"
+ghc = "9.6.7"
+hls = "2.12.0.0"
 node = "22.12"
 wasp = "latest"
 
@@ -16,15 +15,7 @@ TRY_DIR = "{{ "{{ config_root }}" }}/try"
 OP_ACCOUNT = "wasplang.1password.com"
 WASP_TELEMETRY_DISABLE = "1"
 
-'_'.path = [
-  "./.bin",
-
-  # Old Haskell workaround for Apple Silicon
-  "/opt/homebrew/opt/llvm@13/bin",
-]
-
-# Old Haskell workaround for Apple Silicon
-C_INCLUDE_PATH = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi"
+'_'.path = ["./.bin"]
 
 [tasks."start-docker"]
 run = "orbctl start"
