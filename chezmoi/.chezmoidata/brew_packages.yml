@@ -22,6 +22,7 @@ brew_packages:
       - lima
       - lima-additional-guestagents
       - mas
+      - mergiraf
       - mise
       - moreutils
       - ohueter/tap/autokbisw
