@@ -1,6 +1,7 @@
 [tools]
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@railway/cli" = "latest"
+"npm:@wasp.sh/wasp-app-runner" = "latest"
 "npm:dotenv-vault" = "latest"
 "ubi:sst/opencode" = "latest"
 cabal = "3.12.1.0"
@@ -16,13 +17,6 @@ OP_ACCOUNT = "wasplang.1password.com"
 WASP_TELEMETRY_DISABLE = "1"
 
 '_'.path = ["./.bin"]
-
-[tasks."start-docker"]
-run = "orbctl start"
-
-[tasks."postgres"]
-run = "docker run --rm --publish 5433:5432 -v wasp-db-data:/var/lib/postgresql/data --env POSTGRES_PASSWORD={{ .waspPostgresPassword }} --name wasp-postgres postgres"
-depends = "start-docker"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "wasp"]
