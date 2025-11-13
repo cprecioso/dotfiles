@@ -1,3 +1,8 @@
 #!/bin/sh
 
-exec {{.chezmoi.config.destDir}}/Developer/Wasp/wasp/waspc/run "$@"
+set -euo pipefail
+
+waspc="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp/waspc"
+
+cd "$waspc"
+exec "$waspc/run" "$@"
