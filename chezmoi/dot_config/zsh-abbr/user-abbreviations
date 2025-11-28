@@ -1,1 +1,3 @@
 abbr "gs"="git switch"
+abbr "jgf"="jj git fetch"
+abbr "jgp"="jj git push"
