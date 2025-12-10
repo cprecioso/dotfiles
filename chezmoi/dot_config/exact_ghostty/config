@@ -1,2 +1,3 @@
 shell-integration-features = true
 theme = light:Catppuccin Latte,dark:Catppuccin Macchiato
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
