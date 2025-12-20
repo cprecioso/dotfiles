@@ -96,7 +96,6 @@ brew_packages:
       - msty
       - netnewswire
       - proxyman
-      - qflipper
       - rapidapi
       - sf-symbols
       - steam
@@ -107,7 +106,6 @@ brew_packages:
     mas:
       "Deliveries": 290986013
       "Flighty": 1358823008
-      "Infuse": 1136220934
       "Keynote": 409183694
       "Numbers": 409203825
       "Pages": 409201541
