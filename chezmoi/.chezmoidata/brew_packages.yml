@@ -43,10 +43,12 @@ brew_packages:
       - 1password-cli
       - arc
       - cameracontroller
+      - cloudflare-warp
       - dash
       - firefox
       - font-fira-code
       - font-fira-code-nerd-font
+      - ghostty@tip
       - git-credential-manager
       - gitup-app
       - google-chrome
@@ -56,6 +58,7 @@ brew_packages:
       - latest
       - logi-options+
       - monitorcontrol
+      - mountain-duck
       - notion-calendar
       - orbstack
       - pictogram
@@ -66,6 +69,7 @@ brew_packages:
       - suspicious-package
       - timemachineeditor
       - visual-studio-code
+      - zed
     mas:
       "1Blocker": 1365531024
       "1Password for Safari": 1569813296
@@ -77,8 +81,12 @@ brew_packages:
   personal:
     formula:
       - aria2
+      - cocoapods
       - yt-dlp
     cask:
+      - affinity
+      - asset-catalog-tinkerer
+      - bambu-studio
       - beeper
       - cyberduck
       - daisydisk
@@ -102,6 +110,7 @@ brew_packages:
       - tableplus
       - utm
       - virtualbuddy
+      - whisky
       - xcodes-app
     mas:
       "Deliveries": 290986013
