@@ -43,6 +43,7 @@ brew_packages:
       - 1password-cli
       - arc
       - cameracontroller
+      - copilot-cli
       - cloudflare-warp
       - dash
       - firefox
