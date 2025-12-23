@@ -19,9 +19,6 @@ bindkey '^r' _atuin_search_widget
 # shellcheck disable=SC2206
 ZSH_AUTOSUGGEST_STRATEGY=(abbreviations $ZSH_AUTOSUGGEST_STRATEGY)
 
-# pitchfork
-source <(pitchfork activate zsh)
-
 # yazi
 function y() {
 	local tmp cwd
