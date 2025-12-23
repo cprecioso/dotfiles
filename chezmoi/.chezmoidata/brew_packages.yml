@@ -129,7 +129,6 @@ brew_packages:
       "Xcode": 497799835
   wasp:
     formula:
-      - dagger/tap/dagger
       - gpatch
       - libffi
     cask:
