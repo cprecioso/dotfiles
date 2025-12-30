@@ -12,13 +12,13 @@ if [[ -z "$pr_ref" ]]; then
 	exit_with_usage
 fi
 
-fail_fast=0
+fail_fast=()
 gh_command=(gh)
 
 while [[ $# -gt 1 ]]; do
 	case "$2" in
 	--fail-fast)
-		fail_fast=1
+		fail_fast+=("--fail-fast")
 		;;
 	--repo)
 		gh_command+=("--repo" "$3")
@@ -47,7 +47,7 @@ notifier_command=(
 	-contentImage "https://github.com/primer/octicons/raw/refs/heads/main/icons/git-pull-request-24.svg"
 )
 
-if "${gh_command[@]}" pr checks "$pr_ref" --watch ${fail_fast:+--fail-fast}; then
+if "${gh_command[@]}" pr checks "$pr_ref" --watch "${fail_fast[@]}"; then
 	"${notifier_command[@]}" -message "✅ PR ready to merge"
 else
 	"${notifier_command[@]}" -message "❌ PR checks failed"
