@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+exit_with_usage() {
+	echo "Usage: pr-watch <pr-ref> [--fail-fast] [--repo <owner/repo>]" >&2
+	exit 1
+}
+
+pr_ref="${1:-}"
+if [[ -z "$pr_ref" ]]; then
+	exit_with_usage
+fi
+
+fail_fast=0
+gh_command=(gh)
+
+while [[ $# -gt 1 ]]; do
+	case "$2" in
+	--fail-fast)
+		fail_fast=1
+		;;
+	--repo)
+		gh_command+=("--repo" "$3")
+		shift
+		;;
+	*)
+		echo "Unknown option: $2" >&2
+		exit_with_usage
+		;;
+	esac
+	shift
+done
+
+pr_data=$("${gh_command[@]}" pr view "$pr_ref" --json number,title,url)
+pr_number=$(jq -r '.number' <<<"$pr_data")
+pr_title=$(jq -r '.title' <<<"$pr_data")
+pr_url=$(jq -r '.url' <<<"$pr_data")
+
+notification_title="#$pr_number: $pr_title"
+notifier_command=(
+	terminal-notifier
+	-title "$notification_title"
+	-open "$pr_url"
+	-group "$pr_url"
+	-appIcon "https://github.githubassets.com/favicons/favicon.svg"
+	-contentImage "https://github.com/primer/octicons/raw/refs/heads/main/icons/git-pull-request-24.svg"
+)
+
+if "${gh_command[@]}" pr checks "$pr_ref" --watch ${fail_fast:+--fail-fast}; then
+	"${notifier_command[@]}" -message "✅ PR ready to merge"
+else
+	"${notifier_command[@]}" -message "❌ PR checks failed"
+fi

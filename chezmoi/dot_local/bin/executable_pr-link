@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+exit_with_usage() {
+	echo "Usage: pr-link [--sponge] [--list] [--repo <owner/repo>]" >&2
+	exit 1
+}
+
+read_cmd="cat"
+make_list=false
+gh_command=(gh)
+
+while [[ $# -gt 1 ]]; do
+	case "$2" in
+	--sponge)
+		read_cmd="sponge"
+		;;
+	--list)
+		make_list=true
+		;;
+	--repo)
+		gh_command+=("--repo" "$3")
+		shift
+		;;
+	*)
+		echo "Unknown option: $2" >&2
+		exit_with_usage
+		;;
+	esac
+	shift
+done
+
+"${read_cmd}" |
+	while read -r pr_ref; do
+		"${gh_command[@]}" pr view --json url,title,number "$pr_ref" |
+			jq -r \
+				--argjson makeList "$make_list" \
+				'(if $makeList then "- " else "" end) + "[#" + (.number | tostring) + ": " + .title + "](" + .url + ")"'
+	done
