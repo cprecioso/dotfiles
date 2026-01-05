@@ -39,16 +39,17 @@ pr_url=$(jq -r '.url' <<<"$pr_data")
 
 notification_title="#$pr_number: $pr_title"
 notifier_command=(
-	terminal-notifier
+	ibm-notifier
+	-type alert
 	-title "$notification_title"
-	-open "$pr_url"
-	-group "$pr_url"
-	-appIcon "https://github.githubassets.com/favicons/favicon.svg"
-	-contentImage "https://github.com/primer/octicons/raw/refs/heads/main/icons/git-pull-request-24.svg"
+	-main_button_label "Open PR"
+	-main_button_cta_type link
+	-main_button_cta_payload "$pr_url"
+	-notification_image "https://github.com/primer/octicons/raw/refs/heads/main/icons/git-pull-request-24.svg"
 )
 
 if "${gh_command[@]}" pr checks "$pr_ref" --watch "${fail_fast[@]}"; then
-	"${notifier_command[@]}" -message "✅ PR ready to merge"
+	"${notifier_command[@]}" -subtitle "✅ PR ready to merge" &
 else
-	"${notifier_command[@]}" -message "❌ PR checks failed"
+	"${notifier_command[@]}" -subtitle "❌ PR checks failed" &
 fi

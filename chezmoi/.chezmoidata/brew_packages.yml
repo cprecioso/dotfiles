@@ -31,7 +31,6 @@ brew_packages:
       - ripgrep
       - shellcheck
       - shfmt
-      - terminal-notifier
       - tree
       - unar
       - wget
@@ -55,6 +54,7 @@ brew_packages:
       - gitup-app
       - google-chrome
       - hex-fiend
+      - ibm-notifier
       - imageoptim
       - iterm2
       - latest
