@@ -54,7 +54,7 @@ brew_packages:
       - gitup-app
       - google-chrome
       - hex-fiend
-      - ibm-notifier
+      - cprecioso/tap/ibm-notifier
       - imageoptim
       - iterm2
       - latest
