@@ -5,6 +5,7 @@ brew_packages:
     formula:
       - antidote
       - atuin
+      - bash
       - chezmoi
       - coreutils
       - curl
