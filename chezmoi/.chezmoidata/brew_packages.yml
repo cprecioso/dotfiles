@@ -8,7 +8,6 @@ brew_packages:
       - bash
       - chezmoi
       - coreutils
-      - curl
       - difftastic
       - dive
       - file-formula
