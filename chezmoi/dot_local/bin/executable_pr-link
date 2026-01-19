@@ -11,8 +11,8 @@ read_cmd="cat"
 make_list=false
 gh_command=(gh)
 
-while [[ $# -gt 1 ]]; do
-	case "$2" in
+while [[ $# -gt 0 ]]; do
+	case "$1" in
 	--sponge)
 		read_cmd="sponge"
 		;;
@@ -20,11 +20,12 @@ while [[ $# -gt 1 ]]; do
 		make_list=true
 		;;
 	--repo)
-		gh_command+=("--repo" "$3")
+		[[ $# -lt 2 ]] && exit_with_usage
+		gh_command+=("--repo" "$2")
 		shift
 		;;
 	*)
-		echo "Unknown option: $2" >&2
+		echo "Unknown option: $1" >&2
 		exit_with_usage
 		;;
 	esac
