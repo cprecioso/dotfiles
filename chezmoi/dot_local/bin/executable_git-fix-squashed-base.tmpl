@@ -5,11 +5,18 @@ set -euo pipefail
 # shellcheck source=../lib/shell/github.bash
 source "{{.chezmoi.config.destDir}}/.local/lib/shell/github.bash"
 
+echo "Fetching last PR commit and merge commit..." >&2
+
 pr_number=${1:-$(select_pr --state merged)}
 pr_data=$(gh pr view "$pr_number" --json headRefOid,mergeCommit)
 
 head_commit=$(echo "$pr_data" | jq -r '.headRefOid')
 merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid')
 
+git fetch origin "$head_commit" "$merge_commit"
+
+echo "Merging last PR commit: $merge_commit" >&2
 git merge "$head_commit"
+
+echo "Merging the merge commit: $merge_commit" >&2
 git merge "$merge_commit"
