@@ -15,7 +15,7 @@ merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid')
 
 git fetch origin "$head_commit" "$merge_commit"
 
-echo "Merging last PR commit: $merge_commit" >&2
+echo "Merging last PR commit: $head_commit" >&2
 git merge "$head_commit"
 
 echo "Merging the merge commit: $merge_commit" >&2
