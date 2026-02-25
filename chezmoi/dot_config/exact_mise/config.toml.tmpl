@@ -3,16 +3,12 @@ node = "lts"
 deno = "latest"
 "npm:prettier" = "latest"
 "uv" = "latest"
+claude = "latest"
+codex = "latest"
+opencode = "latest"
 
 {{- if .personal }}
 tuist = "latest"
-{{- end -}}
-
-{{- if .wasp }}
-cabal = "latest"
-stack = "latest"
-hls = "latest"
-ghc = "latest"
 {{- end }}
 
 [tool_alias]
