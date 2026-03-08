@@ -1,8 +1,9 @@
 [tools]
 node = "lts"
 deno = "latest"
-"npm:prettier" = "latest"
-"uv" = "latest"
+prettier = "latest"
+uv = "latest"
+corepack = "latest"
 claude = "latest"
 codex = "latest"
 opencode = "latest"
@@ -14,6 +15,7 @@ tuist = "latest"
 [tool_alias]
 wasp = "npm:@wasp.sh/wasp-cli"
 corepack = "npm:corepack"
+prettier = "npm:prettier"
 
 [env]
 TRY_DIR = "{{.chezmoi.config.destDir}}/Developer/Personal/try"
