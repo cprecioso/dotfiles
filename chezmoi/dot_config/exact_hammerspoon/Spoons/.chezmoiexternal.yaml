@@ -1,0 +1,5 @@
+"SpoonInstall.spoon":
+  type: archive
+  url: https://github.com/Hammerspoon/Spoons/raw/refs/heads/master/Spoons/SpoonInstall.spoon.zip
+  stripComponents: 1
+  exact: true
