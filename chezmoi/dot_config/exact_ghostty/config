@@ -1,3 +1,7 @@
 shell-integration-features = true
 theme = light:Catppuccin Latte,dark:Catppuccin Macchiato
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+# Send ESC + CR on Shift+Enter so the shell can distinguish it from plain Enter
+# (used for multi-line editing in zsh/atuin)
+keybind = shift+enter=text:\x1b\r
