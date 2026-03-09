@@ -12,34 +12,28 @@
 {{/* Kinds */}}
 
 {{ define "mas" }}
-{{ if (hasKey . "mas") }}
 {{ range $name, $id := .mas }}
 mas {{ $name | quote }}, id: {{ $id }}
 {{ end }}
 {{ end }}
-{{ end }}
 
 {{ define "tap" }}
-{{ if (hasKey . "tap") }}
 {{ range .tap }}
 tap {{ . | quote }}
 {{ end }}
 {{ end }}
-{{ end }}
 
 {{ define "cask" }}
-{{ if (hasKey . "cask") }}
 {{ range .cask }}
 cask {{ . | quote }}
 {{ end }}
 {{ end }}
-{{ end }}
 
 {{ define "formula" }}
-{{ if (hasKey . "formula") }}
+{{ $profile_data := . }}
 {{ range .formula }}
 brew {{ . | quote }}
-{{ end }}
+{{- if (has . (get $profile_data "service")) -}} , restart_service: true {{- end }}
 {{ end }}
 {{ end }}
 
