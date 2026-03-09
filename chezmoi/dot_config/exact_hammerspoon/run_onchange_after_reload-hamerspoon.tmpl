@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+# Hammerspoon config hash: {{ include "./dot_config/exact_hammerspoon/init.lua" | sha256sum }}
+
+hs -c "hs.reload()"
