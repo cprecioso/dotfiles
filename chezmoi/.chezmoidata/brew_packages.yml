@@ -64,14 +64,13 @@ brew_packages:
       - font-sf-compact
       - font-sf-mono
       - font-sf-pro
-      - ghostty@tip
+      - ghostty
       - git-credential-manager
       - google-chrome
       - hammerspoon
       - hex-fiend
       - cprecioso/tap/ibm-notifier
       - imageoptim
-      - iterm2
       - latest
       - logi-options+
       - logseq
