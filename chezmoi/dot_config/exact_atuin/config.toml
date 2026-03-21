@@ -125,6 +125,8 @@ show_preview = true
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
 enter_accept = true
 
+search_mode = "daemon-fuzzy"
+
 [stats]
 # Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
 common_subcommands = [
@@ -137,6 +139,13 @@ common_subcommands = [
  "kubectl",
  "pkgx",
 ]
+
+[ai]
+enabled = true
+
+[daemon]
+enabled = true
+autostart = true
 
 # Set commands that should be totally stripped and ignored from stats
 #common_prefix = ["sudo"]
