@@ -16,3 +16,6 @@ TRY_DIR = "{{.chezmoi.config.destDir}}/Developer/Personal/try"
 
 [settings]
 lockfile = true
+
+[settings.github]
+credential_command = "gh auth token -h $1"
