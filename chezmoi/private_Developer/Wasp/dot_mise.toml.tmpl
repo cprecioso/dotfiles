@@ -1,4 +1,5 @@
 [tools]
+"github:tfausak/cabal-gild" = "latest"
 "npm:@railway/cli" = "latest"
 "npm:@wasp.sh/wasp-app-runner" = "latest"
 "npm:dotenv-vault" = "latest"
@@ -10,7 +11,10 @@ node = "22.12"
 wasp = "latest"
 
 [tool_alias]
-"cabal-gild" = "github:tfausak/cabal-gild"
+cabal = "asdf:sestrella/asdf-ghcup"
+ghc = "asdf:sestrella/asdf-ghcup"
+hls = "asdf:sestrella/asdf-ghcup"
+wasp = "npm:@wasp.sh/wasp-cli"
 
 [env]
 TRY_DIR = "{{ "{{ config_root }}" }}/try"
