@@ -1,12 +1,13 @@
 #!/bin/sh
 
+default_repo_dir="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp"
 run_path() {
   echo "$1/waspc/run"
 }
 
-repo_dir="$(git rev-parse --show-toplevel)"
+repo_dir="$(git rev-parse --show-toplevel 2>/dev/null || echo "$default_repo_dir")"
 if [ ! -x "$(run_path "$repo_dir")" ]; then
-  repo_dir="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp"
+  repo_dir="$default_repo_dir"
 fi
 
 echo "Using wasp at ${repo_dir}..." >&2
