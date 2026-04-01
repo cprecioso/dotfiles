@@ -1,7 +1,13 @@
 #!/bin/sh
 
-set -euo pipefail
+run_path() {
+  echo "$1/waspc/run"
+}
 
-waspc="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp/waspc"
+repo_dir="$(git rev-parse --show-toplevel)"
+if [ ! -x "$(run_path "$repo_dir")" ]; then
+  repo_dir="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp"
+fi
 
-exec "$waspc/run" "$@"
+echo "Using wasp at ${repo_dir}..." >&2
+exec "$(run_path "$repo_dir")" "$@"
