@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+default_repo_dir="{{.chezmoi.config.destDir}}/Developer/Wasp/wasp"
+run_path() {
+  echo "$1/waspc/run"
+}
+
+repo_dir="$(git rev-parse --show-toplevel 2>/dev/null || echo "$default_repo_dir")"
+if [ ! -x "$(run_path "$repo_dir")" ]; then
+  repo_dir="$default_repo_dir"
+fi
+
+echo "Using wasp at ${repo_dir}..." >&2
+
+case "$1" in
+"update-examples")
+  shift
+
+  echo "+ waspc/run build" >&2
+  (cd "$repo_dir/waspc" && "$(run_path "$repo_dir")" build)
+
+  for example_wasp_file in "$repo_dir"/examples/*{,/*}/main.wasp*; do
+    example_wasp_dir="$(dirname "$example_wasp_file")"
+
+    echo "+ example: $example_wasp_dir" >&2
+
+    if [[ "$example_wasp_file" == *.ts ]]; then
+      echo "++ waspc/run wasp-cli ts-setup" >&2
+      (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" wasp-cli ts-setup)
+    fi
+
+    echo "++ waspc/run bust-libs-cache" >&2
+    (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" bust-libs-cache || true)
+
+    echo "++ waspc/run wasp-cli compile" >&2
+    (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" wasp-cli compile)
+
+    echo "++ npm install" >&2
+    (cd "$example_wasp_dir" && npm install)
+  done
+
+  echo "+ waspc/run test:waspc:e2e:accept-all" >&2
+  (cd "$repo_dir/waspc" && "$(run_path "$repo_dir")" test:waspc:e2e:accept-all)
+  ;;
+esac
