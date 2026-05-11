@@ -3,10 +3,10 @@ deps = []
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-latte"
-rev = "4296a38"
-hash = "509055ecc7e6315cb574be36da7a4495"
+rev = "0670801"
+hash = "b8f46853c27707115f25f3423a47bd38"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-macchiato"
-rev = "4296a38"
-hash = "1e2cc3f0f96197f3dac9591be50bb2af"
+rev = "0670801"
+hash = "67f2240fd9c98f21714527a24cd672f8"
