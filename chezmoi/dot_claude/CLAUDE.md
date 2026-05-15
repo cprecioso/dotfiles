@@ -1,0 +1,2 @@
+- Do not use em dashes
+- Be concise
