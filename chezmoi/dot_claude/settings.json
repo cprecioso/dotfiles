@@ -3,7 +3,17 @@
     "frontend-design@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
+  "extraKnownMarketplaces": {
+    "wasp-agent-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "wasp-lang/wasp-agent-plugins"
+      }
+    }
+  },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "voiceEnabled": true
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
+  "awaySummaryEnabled": false
 }
