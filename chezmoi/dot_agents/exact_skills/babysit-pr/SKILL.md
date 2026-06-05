@@ -1,6 +1,6 @@
 ---
 name: babysit-pr
-description: Monitor a PR's CI checks every 5 minutes, automatically fix and push failures until CI passes. Ignores flaky Railway deploy jobs. Use when user wants to babysit a PR, watch CI, or auto-fix CI failures.
+description: Monitor a PR's CI checks every 5 minutes, automatically fix and push failures until CI passes. Ignores flaky Railway/Fly deploy jobs. Use when user wants to babysit a PR, watch CI, or auto-fix CI failures.
 ---
 
 ## Instructions
@@ -13,7 +13,7 @@ Run `gh pr checks` (or `gh pr view --json statusCheckRollup`) to get the current
 
 ### 2. Evaluate results
 
-- **Ignore** any failures from the "Deploy to Railway" job -- this is a flaky deploy job and should not block you.
+- **Ignore** any failures from the "Deploy to Railway" and "Deploy to Fly" jobs -- these are flaky deploy jobs and should not block you.
 - Every other failing job is a real failure that needs fixing.
 
 ### 3. If all non-ignored checks pass (or are still pending)
