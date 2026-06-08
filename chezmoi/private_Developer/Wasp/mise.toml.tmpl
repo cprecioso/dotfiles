@@ -3,17 +3,18 @@
 "npm:@railway/cli" = "latest"
 "npm:@wasp.sh/wasp-app-runner" = "latest"
 "npm:dotenv-vault" = "latest"
-cabal = "3.12.1.0"
 flyctl = "latest"
-ghc = "9.6.7"
-hls = "2.12.0.0"
 node = "24.14.1"
 wasp = "latest"
+ghcup = "latest"
+"mise-ghcup:cabal" = "3.12.1.0"
+"mise-ghcup:ghc" = "9.6.7"
+"mise-ghcup:hls" = "2.12.0.0"
+
+[plugins]
+"vfox:mise-ghcup" = "https://github.com/cprecioso/mise-ghcup.git"
 
 [tool_alias]
-cabal = "asdf:mise-plugins/mise-ghcup"
-ghc = "asdf:mise-plugins/mise-ghcup"
-hls = "asdf:mise-plugins/mise-ghcup"
 wasp = "npm:@wasp.sh/wasp-cli"
 
 [env]
@@ -25,3 +26,4 @@ WASP_TELEMETRY_DISABLE = "1"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+experimental = true
