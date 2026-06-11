@@ -1,0 +1,4 @@
+{
+  "trustedformulae": ["ohueter/tap/autokbisw"],
+  "trustedtaps": ["cprecioso/tap"]
+}
