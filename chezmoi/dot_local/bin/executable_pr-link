@@ -34,7 +34,7 @@ done
 
 "${read_cmd}" |
 	while read -r pr_ref; do
-		"${gh_command[@]}" pr view --json url,title,number "$pr_ref" |
+		"${gh_command[@]}" issue view --json url,title,number "$pr_ref" |
 			jq -r \
 				--argjson makeList "$make_list" \
 				'(if $makeList then "- " else "" end) + "[#" + (.number | tostring) + ": " + .title + "](" + .url + ")"'
