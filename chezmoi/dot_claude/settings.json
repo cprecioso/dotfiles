@@ -12,8 +12,8 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "awaySummaryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
-  "awaySummaryEnabled": false
+  "voiceEnabled": true
 }

@@ -1,11 +1,14 @@
 # prettier-ignore
 
 enableGlobalCache: true
+
 globalFolder: "${XDG_STATE_HOME}/yarn-berry"
 
 nodeLinker: node-modules
 
-{{ if .personal -}}
+npmMinimalAgeGate: 7d
+{{ if .personal }}
+
 npmRegistries:
   //npm.pkg.github.com:
     npmAlwaysAuth: true
@@ -16,5 +19,3 @@ npmRegistries:
 {{- end }}
 
 tsEnableAutoTypes: true
-
-npmMinimalAgeGate: "7d"
