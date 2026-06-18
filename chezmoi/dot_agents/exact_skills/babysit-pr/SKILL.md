@@ -1,44 +1,53 @@
 ---
 name: babysit-pr
-description: Monitor a PR's CI checks every 5 minutes, automatically fix and push failures until CI passes. Retries flaky Railway/Fly deploy jobs. Use when user wants to babysit a PR, watch CI, or auto-fix CI failures.
+description: Monitor a PR's CI checks, automatically fix and push failures until CI passes. Retries flaky Railway/Fly deploy jobs. Use when user wants to babysit a PR, watch CI, or auto-fix CI failures.
 ---
 
 ## Instructions
 
-Use the `/loop` skill to check the current PR's CI status every 5 minutes. Follow this procedure on each loop iteration:
+Watch the current PR's CI with a **persistent background Monitor**, and act only when a check fails or all checks pass. Do not poll on a timer from the agent loop -- let the monitor emit events and react to them.
 
-### 1. Check CI status
+### 1. Arm the monitor
 
-Run `gh pr checks` (or `gh pr view --json statusCheckRollup`) to get the current state of all CI checks for the PR on the current branch.
+Start a persistent Monitor (`persistent: true`) on the PR for the current branch. The script polls `gh pr checks` and emits one line per check that lands in a terminal state, plus a final line when everything has passed. It must emit on **every** terminal state (failures included), never only on success -- otherwise a crashed or hung check is indistinguishable from "still pending".
 
-### 2. Evaluate results
+```bash
+prev=""
+while true; do
+  s=$(gh pr checks --json name,bucket,link 2>/dev/null) || { sleep 30; continue; }
+  cur=$(jq -r '.[] | select(.bucket!="pending") | "\(.bucket)\t\(.name)\t\(.link)"' <<<"$s" | sort)
+  # emit only newly-terminal checks since last poll
+  comm -13 <(echo "$prev") <(echo "$cur")
+  prev=$cur
+  if jq -e 'all(.bucket!="pending")' <<<"$s" >/dev/null; then
+    if jq -e 'all(.bucket=="pass" or .bucket=="skipping")' <<<"$s" >/dev/null; then
+      echo "ALL_PASS"
+    fi
+    break
+  fi
+  sleep 30
+done
+```
 
-- Treat failures from the "Deploy to Railway" and "Deploy to Fly" jobs as **flaky** -- most of the time, they do not need a fix in code. Instead, **retry** them (see step 4a).
-- Every other failing job is a real failure that needs a fix (see step 4b).
+Use a clear `description` like `CI checks for PR <branch>`.
 
-### 3. If all checks pass (or are still pending)
+### 2. React to each event
 
-- If all checks have **passed**: report success and **cancel the loop**. The PR is green.
-- If checks are still **pending** with none failing: do nothing, wait for the next loop iteration.
+Each emitted line is `<bucket>\t<name>\t<link>`. Decide per event:
 
-### 4a. If a flaky deploy job (Railway / Fly) fails
+- **`pass` / `skipping`**: nothing to do.
+- **`cancel`**: could be because of a new CI run is scheduled (wait and check again), or because the CI failed or the user manually canceled it (TaskStop)
+- **`fail` on deploy jobs**: first time it happens, treat as **flaky** and retry with `gh run rerun <run-id> --failed`
+- **other `fail`s**: needs an investigation and possibly a code fix
+- **`ALL_PASS`**: report success, **stop the monitor** (TaskStop) -- done
 
-1. **Retry** the failed job rather than editing code: `gh run rerun <run-id> --failed`.
-2. Wait for the next loop iteration to verify the retry passed.
-3. Most of the time they do not point to failures in code -- they usually are infrastructure flakiness, so retrying is the correct response.
+### 3. When a check fails
 
-### 4b. If any other (non-deploy) check fails
-
-1. Read the failed job's logs using `gh run view <run-id> --log-failed` to understand what went wrong.
+1. Read the failed job's logs: `gh run view <run-id> --log-failed`.
 2. Fix the issue in the code.
-3. Commit and push. If the commit or push hangs or times out due to GPG signing, retry with signing disabled (`git -c commit.gpgsign=false commit ...` and/or `git -c push.gpgSign=false push`).
-4. Wait for the next loop iteration to verify the fix.
+3. Commit and push. If commit or push hangs or times out due to GPG signing, retry with signing disabled (`git -c commit.gpgsign=false commit ...` and/or `git -c push.gpgSign=false push`).
+4. The push starts a new CI run; the monitor will emit its results as new events.
 
-### 5. Loop behavior
+### 4. Re-arming after a fix or retry
 
-- Interval: **5 minutes**
-- The loop continues until all CI checks pass, at which point cancel it.
-- If you fix a failure and push, the next iteration will check the new run.
-- If you retry a flaky deploy job, the next iteration will check the retried run.
-
-Start by invoking: `/loop 5m check PR CI, fix failures, push again if needed`
+A push or rerun starts a fresh CI run. If the monitor exited (because all checks for the previous run were terminal), arm a new monitor for the new run. If you used a persistent monitor that is still polling, it will pick up the new run's checks automatically. Keep watching until you see `ALL_PASS`, then stop the monitor.
