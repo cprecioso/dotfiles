@@ -42,6 +42,7 @@
 	format = ssh
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = {{.chezmoi.config.destDir}}/.config/git/allowed_signers
 
 ### CREDENTIALS ###
 [credential "https://github.com"]
