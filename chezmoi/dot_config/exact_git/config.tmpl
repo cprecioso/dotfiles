@@ -1,7 +1,7 @@
 ### BASIC ###
 
 [user]
-  name = Carlos Precioso
+	name = Carlos Precioso
 	email = github@precioso.design
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -36,12 +36,12 @@
 [commit]
 	gpgsign = true
 [tag]
-  forceSignAnnotated = true
+	forceSignAnnotated = true
 	gpgsign = true
 [gpg]
 	format = ssh
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 	allowedSignersFile = {{.chezmoi.config.destDir}}/.config/git/allowed_signers
 
 ### CREDENTIALS ###
@@ -75,7 +75,7 @@
 {{ if .wasp -}}
 ### Wasp ###
 [includeIf "gitdir/i:{{.chezmoi.config.destDir}}/Developer/Wasp/"]
-  path = {{.chezmoi.config.destDir}}/Developer/Wasp/.config/git/config
+	path = {{.chezmoi.config.destDir}}/Developer/Wasp/.config/git/config
 {{- end }}
 
 
