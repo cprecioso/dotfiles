@@ -30,11 +30,11 @@ case "$1" in
 
     echo "+ example: $example_wasp_dir" >&2
 
-    echo "++ waspc/run wasp-cli install" >&2
-    (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" wasp-cli install)
-
     echo "++ waspc/run bust-libs-cache" >&2
     (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" bust-libs-cache || true)
+
+    echo "++ waspc/run wasp-cli install" >&2
+    (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" wasp-cli install)
 
     echo "++ waspc/run wasp-cli compile" >&2
     (cd "$example_wasp_dir" && "$(run_path "$repo_dir")" wasp-cli compile)
