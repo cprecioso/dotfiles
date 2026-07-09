@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+exit_code=0
+"{{.chezmoi.config.destDir}}/.local/bin/ibm-notifier" \
+	-type systemalert \
+	-title "Enable notifications" \
+	-subtitle "Install the system profile for IBM Notifier?" \
+	-main_button_label "Install and open System Settings" \
+	-secondary_button_label "Skip" ||
+	exit_code=$?
+
+case $exit_code in
+0) # Main button clicked
+
+	# hash: {{ include "dot_local/share/exact_dotfiles/profile.mobileconfig" | sha256sum }}
+	open "{{.chezmoi.config.destDir}}/.local/share/dotfiles/profile.mobileconfig"
+
+	open "x-apple.systempreferences:com.apple.preferences.configurationprofiles"
+	;;
+
+2) # Secondary button clicked
+	exit 0
+	;;
+
+*) # Other
+	exit "$exit_code"
+	;;
+esac
