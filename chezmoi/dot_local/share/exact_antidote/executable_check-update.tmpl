@@ -9,21 +9,18 @@ if [[ -f "$update_file" ]] && (($(date +%s) - $(stat -f %m "$update_file") < 604
 	exit 0
 fi
 
-notifier_command=(
-	"{{.chezmoi.config.destDir}}/.local/bin/ibm-notifier"
-	-type alert
-	-title "Update Antidote plugins"
-	-subtitle "It's been more than 7 days since you last updated your zsh plugins."
-	-main_button_label "Update now"
-	-secondary_button_label "Skip"
-)
-
 exit_code=0
-"${notifier_command[@]}" || exit_code=$?
+"{{.chezmoi.config.destDir}}/.local/bin/ibm-notifier" \
+	-type alert \
+	-title "Update Antidote plugins" \
+	-subtitle "It's been more than 7 days since you last updated your zsh plugins." \
+	-main_button_label "Update now" \
+	-secondary_button_label "Skip" ||
+	exit_code=$?
 
 case $exit_code in
 0) # Main button clicked
-	open "{{.chezmoi.config.destDir}}/.local/bin/antidote-update"
+	open -a Ghostty "{{.chezmoi.config.destDir}}/.local/bin/antidote-update"
 	;;
 2) # Secondary button clicked
 	# Skipped; ask again in a week
