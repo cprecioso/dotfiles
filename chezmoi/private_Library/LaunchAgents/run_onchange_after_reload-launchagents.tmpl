@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+domain="gui/$(id -u)"
+
+plists=(
+	{{- range glob (joinPath .chezmoi.sourceDir "private_Library/LaunchAgents/*.plist*") }}
+	# hash: {{ include . | sha256sum }}
+	"{{ $.chezmoi.config.destDir }}/Library/LaunchAgents/{{ trimSuffix ".tmpl" (base .) }}"
+	{{- end }}
+)
+
+for plist in "${plists[@]}"; do
+	launchctl bootout "$domain" "$plist" 2>/dev/null || true
+	launchctl bootstrap "$domain" "$plist"
+done
