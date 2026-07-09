@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+state_dir="{{.chezmoi.config.destDir}}/.local/state/antidote"
+update_file="$state_dir/last_update"
+
+if [[ -f "$update_file" ]] && (($(date +%s) - $(stat -f %m "$update_file") < 604800)); then
+	exit 0
+fi
+
+notifier_command=(
+	"{{.chezmoi.config.destDir}}/.local/bin/ibm-notifier"
+	-type alert
+	-title "Update Antidote plugins"
+	-subtitle "It's been more than 7 days since you last updated your zsh plugins."
+	-main_button_label "Update now"
+	-secondary_button_label "Skip"
+)
+
+exit_code=0
+"${notifier_command[@]}" || exit_code=$?
+
+case $exit_code in
+0) # Main button clicked
+	open "{{.chezmoi.config.destDir}}/.local/bin/antidote-update"
+	;;
+2) # Secondary button clicked
+	# Skipped; ask again in a week
+	mkdir -p "$state_dir"
+	touch "$update_file"
+	;;
+*) # Other
+	exit "$exit_code"
+	;;
+esac

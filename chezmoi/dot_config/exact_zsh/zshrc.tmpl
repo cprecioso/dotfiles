@@ -12,8 +12,6 @@ source "{{.chezmoi.config.destDir}}/.config/zsh/xdg-overrides.zsh"
 export ATUIN_NOBIND="true"
 
 # Antidote
-# shellcheck source=../exact_antidote/check_update.zsh.tmpl
-source "{{.chezmoi.config.destDir}}/.config/antidote/check_update.zsh"
 # shellcheck source=/dev/null
 source "{{.chezmoi.config.destDir}}/.local/state/antidote/zsh_plugins.zsh"
 
