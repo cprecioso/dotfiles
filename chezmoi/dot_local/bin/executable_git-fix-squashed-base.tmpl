@@ -11,12 +11,41 @@ pr_number=${1:-$(select_pr --state merged)}
 pr_data=$(gh pr view "$pr_number" --json headRefOid,mergeCommit)
 
 head_commit=$(echo "$pr_data" | jq -r '.headRefOid')
-merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid')
+merge_commit=$(echo "$pr_data" | jq -r '.mergeCommit.oid // empty')
+
+if [[ -z "$merge_commit" ]]; then
+	echo "PR #$pr_number has no merge commit (not merged yet?)" >&2
+	exit 1
+fi
 
 git fetch origin "$head_commit" "$merge_commit"
 
-echo "Merging last PR commit: $head_commit" >&2
-git merge "$head_commit"
+if git merge-base --is-ancestor "$merge_commit" HEAD; then
+	echo "Merge commit $merge_commit is already in this branch's history" >&2
+	exit 0
+fi
 
-echo "Merging the merge commit: $merge_commit" >&2
-git merge "$merge_commit"
+# Make sure the branch contains the PR's final commit. Any conflict here is
+# real divergence from the PR and should block.
+if ! git merge-base --is-ancestor "$head_commit" HEAD; then
+	echo "Merging last PR commit: $head_commit" >&2
+	git merge -m "Merge PR #$pr_number head" "$head_commit"
+fi
+
+# The squash commit contains the same changes as $head_commit but shares no
+# history with it, so merging it directly would use the old fork point as the
+# merge base and re-conflict on every line this branch changed on top of the
+# PR. Grafting them together (a merge commit with the squash commit's tree and
+# both as parents) makes $head_commit the merge base, so only changes that
+# actually landed on the base branch besides the PR need merging. Real
+# conflicts with those still block.
+echo "Merging the squash commit: $merge_commit" >&2
+# git commit-tree is plumbing and ignores commit.gpgsign, so sign explicitly
+sign_flag=()
+if [[ "$(git config --get --type=bool commit.gpgsign || true)" == true ]]; then
+	sign_flag=(-S)
+fi
+graft=$(git commit-tree "$merge_commit^{tree}" ${sign_flag[@]+"${sign_flag[@]}"} \
+	-p "$head_commit" -p "$merge_commit" \
+	-m "Graft squashed PR #$pr_number onto its original branch")
+git merge -m "Merge squashed PR #$pr_number" "$graft"
