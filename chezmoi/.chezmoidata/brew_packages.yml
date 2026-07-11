@@ -7,6 +7,7 @@ brew_packages:
       - antidote
       - atuin
       - bash
+      - ccusage
       - chezmoi
       - coreutils
       - difftastic
@@ -50,7 +51,6 @@ brew_packages:
       - cameracontroller
       - copilot-cli
       - claude
-      - claude-island
       - cloudflare-warp
       - conductor
       - cyberduck
@@ -114,7 +114,6 @@ brew_packages:
     formula:
       - aria2
       - cocoapods
-      - swift-format
       - yt-dlp
     service: []
     cask:
@@ -127,7 +126,6 @@ brew_packages:
       - moneymoney
       - sf-symbols
       - steam
-      - whisky
       - xcodes-app
     mas:
       "Shazam": 897118787
