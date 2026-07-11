@@ -69,7 +69,7 @@ brew_packages:
       - google-chrome
       - hammerspoon
       - hex-fiend
-      - cprecioso/tap/ibm-notifier
+      - ibm-notifier
       - imageoptim
       - latest
       - logi-options+
