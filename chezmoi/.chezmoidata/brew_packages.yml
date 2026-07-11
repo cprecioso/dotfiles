@@ -67,7 +67,6 @@ brew_packages:
       - ghostty
       - git-credential-manager
       - google-chrome
-      - hammerspoon
       - hex-fiend
       - ibm-notifier
       - imageoptim
