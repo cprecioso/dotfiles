@@ -20,10 +20,9 @@
       }
     }
   },
-  "alwaysThinkingEnabled": true,
   "awaySummaryEnabled": false,
   "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "theme": "auto",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
 }
