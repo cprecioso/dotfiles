@@ -28,6 +28,8 @@ brew_packages:
       - mise
       - moreutils
       - ohueter/tap/autokbisw
+      - opencode
+      - pandoc
       - pkgx
       - pv
       - ripgrep
@@ -50,6 +52,7 @@ brew_packages:
       - beeper
       - cameracontroller
       - copilot-cli
+      - codex
       - claude
       - cloudflare-warp
       - conductor
@@ -78,6 +81,7 @@ brew_packages:
       - notion-calendar
       - opencode-desktop
       - orbstack
+      - paseo
       - proxyman
       - rapidapi
       - raycast
@@ -91,6 +95,7 @@ brew_packages:
       - utm
       - yaak
       - visual-studio-code
+      - vorssaint
       - zed
     mas:
       "1Blocker": 1365531024
@@ -104,6 +109,7 @@ brew_packages:
       "Keynote": 361285480
       "Numbers": 361304891
       "Pages": 361309726
+      "Pasteboard Viewer": 1499215709
       "Parcel": 375589283
       "The Unarchiver": 425424353
       "Tripsy": 1429967544
@@ -118,11 +124,14 @@ brew_packages:
     service: []
     cask:
       - affinity
+      - apparency
+      - archaeology
       - asset-catalog-tinkerer
       - bambu-studio
       - daisydisk
       - epic-games
       - iina
+      - minizincide
       - moneymoney
       - sf-symbols
       - steam
