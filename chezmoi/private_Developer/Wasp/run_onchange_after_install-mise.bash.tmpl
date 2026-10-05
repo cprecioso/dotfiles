@@ -4,5 +4,5 @@ set -euxo pipefail
 
 # mise.toml hash: {{ includeTemplate "./private_Developer/Wasp/mise.toml.tmpl" . | sha256sum }}
 
-mise trust ./.mise.toml
+mise trust ./mise.toml
 mise install
