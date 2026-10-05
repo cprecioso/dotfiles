@@ -19,21 +19,21 @@ mas {{ $name | quote }}, id: {{ $id }}
 
 {{ define "tap" }}
 {{ range .tap }}
-tap {{ . | quote }}
+tap {{ . | quote }}, trusted: true
 {{ end }}
 {{ end }}
 
 {{ define "cask" }}
 {{ range .cask }}
-cask {{ . | quote }}
+cask {{ . | quote }}, trusted: true
 {{ end }}
 {{ end }}
 
 {{ define "formula" }}
 {{ $profile_data := . }}
 {{ range .formula }}
-brew {{ . | quote }}
-{{- if (has . (get $profile_data "service")) -}} , restart_service: true {{- end }}
+brew {{ . | quote }}, trusted: true
+{{- if (has . (get $profile_data "service")) -}}, restart_service: true {{- end }}
 {{ end }}
 {{ end }}
 
