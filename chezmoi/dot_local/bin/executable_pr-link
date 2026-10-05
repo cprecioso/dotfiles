@@ -8,8 +8,9 @@ exit_with_usage() {
 }
 
 read_cmd="cat"
-make_list=false
+list_prefix=""
 gh_command=(gh)
+api_repo="{owner}/{repo}"
 
 while [[ $# -gt 0 ]]; do
 	case "$1" in
@@ -17,11 +18,12 @@ while [[ $# -gt 0 ]]; do
 		read_cmd="sponge"
 		;;
 	--list)
-		make_list=true
+		list_prefix="- "
 		;;
 	--repo)
 		[[ $# -lt 2 ]] && exit_with_usage
 		gh_command+=("--repo" "$2")
+		api_repo="$2"
 		shift
 		;;
 	*)
@@ -32,10 +34,32 @@ while [[ $# -gt 0 ]]; do
 	shift
 done
 
+print_link() {
+	local prefix="$1" ref="$2"
+	"${gh_command[@]}" issue view --json url,title,number "$ref" |
+		jq -r \
+			--arg prefix "$prefix" \
+			'$prefix + "[#" + (.number | tostring) + ": " + .title + "](" + .url + ")"'
+}
+
+# Stacks share the issue/PR numbering, so a number is a stack only when the
+# stacks endpoint resolves it. Prints the stack's PR numbers, bottom to top.
+stack_prs() {
+	local number="${1#\#}"
+	[[ "$number" =~ ^[0-9]+$ ]] || return 1
+	gh api "/repos/${api_repo}/stacks/${number}" \
+		--jq '.pull_requests[].number' 2>/dev/null
+}
+
 "${read_cmd}" |
 	while read -r pr_ref; do
-		"${gh_command[@]}" issue view --json url,title,number "$pr_ref" |
-			jq -r \
-				--argjson makeList "$make_list" \
-				'(if $makeList then "- " else "" end) + "[#" + (.number | tostring) + ": " + .title + "](" + .url + ")"'
+		if prs="$(stack_prs "$pr_ref")" && [[ -n "$prs" ]]; then
+			index=1
+			while read -r stacked_pr; do
+				print_link "${index}. " "$stacked_pr"
+				index=$((index + 1))
+			done <<<"$prs"
+		else
+			print_link "$list_prefix" "$pr_ref"
+		fi
 	done
