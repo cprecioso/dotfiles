@@ -1,11 +1,10 @@
 [tools]
-node = "lts"
+cabal = "3.16.1.0"
 deno = "latest"
-"npm:corepack" = "latest"
-uv = "latest"
+node = "lts"
+nub = { version = "latest", allow_builds = ["@nubjs/nub"] }
 prettier = "latest"
-codex = "latest"
-opencode = "latest"
+uv = "latest"
 
 {{- if .personal }}
 tuist = "latest"
