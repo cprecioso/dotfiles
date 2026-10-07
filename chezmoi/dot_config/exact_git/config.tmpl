@@ -34,7 +34,7 @@
 ### SIGNING ###
 
 [user]
-	signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDlGhuUmMUn/d9Fs99wvgsppmtrg8ijqxGqikJOLhzFq"
+	signingKey = "key::{{ onepasswordRead "op://Private/Git Personal Key/public key" "my.1password.eu" }}"
 [commit]
 	gpgsign = true
 [tag]

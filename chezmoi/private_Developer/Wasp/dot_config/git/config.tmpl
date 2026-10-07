@@ -1,7 +1,7 @@
 [user]
   name = Carlos Precioso
 	email = carlos@wasp-lang.dev
-	signingKey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK2ly9KwhPCe1W92HPcYWOcfc7mSBGZvA60XKaZMHpEs"
+	signingKey = "key::{{ onepasswordRead "op://Employee/Git Work Key/public key" "wasplang.1password.com" }}"
 
 [includeIf "hasconfig:remote.*.url:https://github.com/wasp-lang/**"]
   path=wasp-config.inc
