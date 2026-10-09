@@ -16,6 +16,7 @@ export DOCKER_CONFIG="${XDG_CONFIG_HOME}"/docker
 export FLY_CONFIG_DIR="$XDG_STATE_HOME"/fly
 export GEM_HOME="${XDG_DATA_HOME}"/gem
 export GEM_SPEC_CACHE="${XDG_CACHE_HOME}"/gem
+export GHCUP_USE_XDG_DIRS=true
 export GNUPGHOME="${XDG_DATA_HOME}"/gnupg
 export GOPATH="${XDG_DATA_HOME}"/go
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
