@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REMOTE=origin
+
+git fetch $REMOTE
+
+for update in $(
+	gh stack view --json |
+		jq -c '
+			. as $input
+			| .branches
+			| to_entries
+			| .[]
+			| {
+					"base":
+						if .key == 0 then
+							$input.trunk
+						else
+							$input.branches[.key - 1].name
+						end,
+					"head": .value.name
+				}
+		'
+); do
+	base=$(jq -r '.base' <<<"$update")
+	head=$(jq -r '.head' <<<"$update")
+
+	set -x
+	git switch "$head"
+	git merge --no-edit "$REMOTE/$base"
+	git push
+	set +x
+done
