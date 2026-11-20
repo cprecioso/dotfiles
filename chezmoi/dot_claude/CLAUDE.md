@@ -1,2 +1,4 @@
 - Do not use em dashes
 - Be concise
+- Never add Claude attribution to commits, PRs, or comments (no `Co-Authored-By: Claude`, no "Generated with Claude Code")
+- PR descriptions: explicative but concise, not terse. Structure: (1) high-level problem or motivation, (2) high-level solution, (3) optional short list of changes not obvious from 1 and 2. Don't restate the diff (e.g. "Removed Foo module") or list stack positions. Use the repo's PR template.

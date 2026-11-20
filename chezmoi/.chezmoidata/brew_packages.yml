@@ -48,9 +48,11 @@ brew_packages:
     cask:
       - 1password
       - 1password-cli
+      - affinity
       - arc
       - beeper
       - cameracontroller
+      - chatgpt
       - copilot-cli
       - codex
       - claude
@@ -97,6 +99,7 @@ brew_packages:
       - visual-studio-code
       - vorssaint
       - zed
+      - zen
     mas:
       "1Blocker": 1365531024
       "1Password for Safari": 1569813296
@@ -123,7 +126,6 @@ brew_packages:
       - yt-dlp
     service: []
     cask:
-      - affinity
       - apparency
       - archaeology
       - asset-catalog-tinkerer
@@ -144,11 +146,13 @@ brew_packages:
   wasp:
     tap: []
     formula:
+      - diffutils
       - gpatch
       - libffi
     service: []
     cask:
       - discord
+      - gather
       - notion
       - thunderbird
     mas: {}

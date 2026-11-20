@@ -2,6 +2,7 @@
 cabal = "3.16.1.0"
 deno = "latest"
 node = "lts"
+"npm:pulls.review" = "latest"
 nub = "latest"
 prettier = "latest"
 "spm:cprecioso/swift-transcribe" = "v0.2.1"
@@ -22,10 +23,6 @@ TRY_ACTIONS_FILE = "{{.chezmoi.config.destDir}}/.config/try/actions.bash"
 lockfile = true
 minimum_release_age = "7d"
 experimental = true
-
-[settings.node]
-corepack = true
-npm_shim = false
 
 [settings.github]
 use_git_credentials = true

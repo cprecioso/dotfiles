@@ -1,5 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "GIT_CONFIG_COUNT": "2",
+    "GIT_CONFIG_KEY_0": "user.signingkey",
+    "GIT_CONFIG_VALUE_0": "{{.chezmoi.config.destDir}}/.ssh/agent-commits.pub",
+    "GIT_CONFIG_KEY_1": "gpg.ssh.program",
+    "GIT_CONFIG_VALUE_1": "ssh-keygen",
+    "GIT_COMMITTER_NAME": "Carlos Precioso's Agent",
+    "GIT_COMMITTER_EMAIL": "agent@precioso.design"
+  },
   "attribution": {
     "commit": "",
     "pr": "",
@@ -7,6 +16,19 @@
   },
   "permissions": {
     "defaultMode": "auto"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
@@ -24,14 +46,5 @@
   "tui": "fullscreen",
   "theme": "auto",
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "env": {
-    "GIT_CONFIG_COUNT": "2",
-    "GIT_CONFIG_KEY_0": "user.signingkey",
-    "GIT_CONFIG_VALUE_0": "{{.chezmoi.config.destDir}}/.ssh/agent-commits.pub",
-    "GIT_CONFIG_KEY_1": "gpg.ssh.program",
-    "GIT_CONFIG_VALUE_1": "ssh-keygen",
-    "GIT_COMMITTER_NAME": "Carlos Precioso's Agent",
-    "GIT_COMMITTER_EMAIL": "agent@precioso.design"
-  }
+  "agentPushNotifEnabled": true
 }
